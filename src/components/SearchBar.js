@@ -19,7 +19,7 @@ const SearchBar = ({bible, books}) => {
     const onSearch = (event) => {
         const value = event.target.value;
         setQuery(value);
-        debouncedSearch(value);
+        debouncedSearch(value);        
     }
 
     return (
