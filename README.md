@@ -16,6 +16,15 @@ KJV is from https://www.gutenberg.org/cache/epub/30/pg30-images.html
 
 ---
 
+# Todo
+
+- [] Loading
+- [] Book Select Menu
+- [] Styling
+- [] About / Contact Page (link to this github repo)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
