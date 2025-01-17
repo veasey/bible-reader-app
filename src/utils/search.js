@@ -1,3 +1,5 @@
+import { books } from '../constants/books.js';
+
 /**
  * @note.
  * Can bible / books be global to all methods here?
@@ -5,7 +7,7 @@
  * - perhaps skip get book, as this will be via menu???
  */
 
-const findVersesByQuery = (query, bible, books) => {
+const findVersesByQuery = (query, bible) => {
   
   const bookIds = Object.keys(bible);
   let results = [];
@@ -35,15 +37,15 @@ const findVersesByQuery = (query, bible, books) => {
   return results;
 }
 
-const findBook  = (query, bible, books) => {
+const findBook  = (query, bible) => {
   return [];
 }
 
-const findChapter = (query, bible, books) => {
+const findChapter = (query, bible) => {
   return [];
 }
 
-const findVerse = (query, bible, books) => {
+const findVerse = (query, bible) => {
 
   const regex = /^([a-zA-Z]+)\s(\d+):(\d+)$/i;
   const padDigits = (num, length = 3) => num.toString().padStart(length, '0');
@@ -68,7 +70,7 @@ const findVerse = (query, bible, books) => {
   return null;
 }
 
-export const handleSearch = (query, bible, books) => {
+export const handleSearch = (query, bible) => {
 
     console.log('handle search');
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import './App.css';
-import { books } from './constants/books.js';
 
 const currentTranslation = 'kjv';
 
@@ -19,7 +18,7 @@ const BibleApp = () => {
   return (
     <div>
       <h1>King James Bible</h1>
-      <SearchBar bible={bible} books={books}  />
+      <SearchBar bible={bible} />
     </div>
   );
 };
