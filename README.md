@@ -18,10 +18,10 @@ KJV is from https://www.gutenberg.org/cache/epub/30/pg30-images.html
 
 # Todo
 
-- [X] Loading
-- [] Book Select Menu
-- [] Styling
-- [] About / Contact Page (link to this github repo)
+[X] Loading
+[ ] Book Select Menu
+[ ] Styling
+[ ] About / Contact Page (link to this github repo)
 
 ---
 
