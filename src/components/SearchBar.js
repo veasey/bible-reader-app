@@ -23,7 +23,9 @@ const SearchBar = ({bible, books}) => {
         setLoading(true);
         const value = event.target.value;
         setQuery(value);
-        debouncedSearch(value);        
+        if (query.length >= 3) {
+            debouncedSearch(value); 
+        }       
     }
 
     return (
@@ -35,6 +37,9 @@ const SearchBar = ({bible, books}) => {
                 onChange={onSearch}
                 style={{ marginRight: '10px' }}
             />
+            {loading && <LoadingThrobber message="Searching for verses..." />}
+            {query && !results && <div><p>No results found</p></div>}
+            {results && 
             <div>
                 {results.map((result, index) => (
                 <p key={index}>
@@ -42,7 +47,7 @@ const SearchBar = ({bible, books}) => {
                 </p>
                 ))}
             </div>
-            {loading && <LoadingThrobber message="Searching for verses..." />}
+            }
         </>
     );
 }

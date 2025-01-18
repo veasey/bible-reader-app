@@ -7,6 +7,19 @@ import { books } from '../constants/books.js';
  * - perhaps skip get book, as this will be via menu???
  */
 
+const getVerseFromBible = (ids, bible) => {
+
+  const padDigits = (num, length = 3) => num.toString().padStart(length, '0');
+
+  let [bookId, chapterId, verseId] = ids;
+
+  bookId = padDigits(bookId, 2);
+  chapterId = padDigits(chapterId);
+  verseId   = padDigits(verseId);
+
+  return bible[bookId][chapterId][verseId];
+}
+
 const findVersesByQuery = (query, bible) => {
   
   const bookIds = Object.keys(bible);
@@ -20,14 +33,14 @@ const findVersesByQuery = (query, bible) => {
       const verseIds = Object.keys(bible[bookId][chapterId])
       for (const verseId of verseIds) {
 
-        const verseText = bible[bookId][chapterId][verseId];
-
+        const ids = [bookId, chapterId, verseId];
+        const verseText = getVerseFromBible(ids, bible);
         if (verseText.toLowerCase().includes(query.toLowerCase())) {
           results.push({
             book: books.find((b) => bookId === b.key)?.name,
             chapter: chapterId,
             verse: verseId,
-            text: verseText,
+            text: verseText
           });
         }
       }
@@ -48,23 +61,25 @@ const findChapter = (query, bible) => {
 const findVerse = (query, bible) => {
 
   const regex = /^([a-zA-Z]+)\s(\d+):(\d+)$/i;
-  const padDigits = (num, length = 3) => num.toString().padStart(length, '0');
-
   const match = query.toLowerCase().trim().match(regex);
   
   if (match) {
     const bookName = match[1];
-    const bookId = padDigits(books.find(b => b.name.toLowerCase() === bookName.toLowerCase()).key, 2);
+    const bookId = books.find(b => b.name.toLowerCase() === bookName.toLowerCase()).key;
 
-    const chapterId = padDigits(match[2]);
-    const verseId   = padDigits(match[3]);
+    const ids = [bookId, match[2], match[3]];
+    const verseText = getVerseFromBible(ids, bible);
     
-    return [{
-      book: bookName,
-      chapter: chapterId,
-      verse: verseId,
-      text: bible[bookId][chapterId][verseId],
-    }];
+    if (verseText.length) {
+      return [{
+        book: bookName,
+        chapter: match[2],
+        verse: match[3],
+        text: verseText,
+      }];
+    } 
+
+    return [];
   }
 
   return null;
@@ -72,15 +87,11 @@ const findVerse = (query, bible) => {
 
 export const handleSearch = (query, bible) => {
 
-    console.log('handle search');
-
     if (!query.trim() || !bible) return;
 
     const bookPattern = books.join("|")
     const normalizedQuery = query.toLowerCase();
     let results = [];
-
-    console.log('test');
 
     const regexVerse = /^[a-zA-Z]+\s+\d+:\d+$/i;
 
