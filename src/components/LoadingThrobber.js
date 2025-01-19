@@ -4,10 +4,7 @@ import './LoadingThrobber.css';
 const LoadingThrobber = ({ message }) => {
   return (
     <div className="container">
-      {/* Optional cross icon */}
-      <div className="icon">˗ˏˋ ✞ ˎˊ˗</div>
-      {/* Loading Message */}
-      {message && <p className="message">{message}</p>}
+      <div className="icon">˗ˏˋ ✞ ˎˊ˗ {message && <span className="message">{message}</span>}</div>
     </div>
   );
 };
