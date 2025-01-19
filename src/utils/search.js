@@ -13,7 +13,7 @@ const getVerseFromBible = (ids, bible) => {
 
   let [bookId, chapterId, verseId] = ids;
 
-  bookId = padDigits(bookId, 2);
+  bookId    = padDigits(bookId, 2);
   chapterId = padDigits(chapterId);
   verseId   = padDigits(verseId);
 
@@ -21,6 +21,13 @@ const getVerseFromBible = (ids, bible) => {
 }
 
 const findVersesByQuery = (query, bible) => {
+
+  const removeLeadingZeros = (paddedNum) => {
+    if (!paddedNum || isNaN(paddedNum)) {
+      return "Invalid input";
+    }
+    return parseInt(paddedNum, 10);
+  }
   
   const bookIds = Object.keys(bible);
   let results = [];
@@ -37,10 +44,10 @@ const findVersesByQuery = (query, bible) => {
         const verseText = getVerseFromBible(ids, bible);
         if (verseText.toLowerCase().includes(query.toLowerCase())) {
           results.push({
-            book: books.find((b) => bookId === b.key)?.name,
-            chapter: chapterId,
-            verse: verseId,
-            text: verseText
+            book:     books.find((b) => bookId === b.key)?.name,
+            chapter:  removeLeadingZeros(chapterId),
+            verse:    removeLeadingZeros(verseId),
+            text:     verseText
           });
         }
       }
@@ -64,25 +71,22 @@ const findVerse = (query, bible) => {
   const match = query.toLowerCase().trim().match(regex);
   
   if (match) {
-    const bookName = match[1];
-    const bookId = books.find(b => b.name.toLowerCase() === bookName.toLowerCase()).key;
+    const { key: bookId, name: bookName } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
 
     const ids = [bookId, match[2], match[3]];
     const verseText = getVerseFromBible(ids, bible);
     
-    if (verseText.length) {
+    if (verseText && verseText.length) {
       return [{
-        book: bookName,
-        chapter: match[2],
-        verse: match[3],
-        text: verseText,
+        book:     bookName,
+        chapter:  match[2],
+        verse:    match[3],
+        text:     verseText,
       }];
-    } 
-
-    return [];
+    }
   }
 
-  return null;
+  return [];
 }
 
 export const handleSearch = (query, bible) => {
