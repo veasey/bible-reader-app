@@ -1,9 +1,10 @@
 .container {
     flex: 1;
     background-color: #F0F8FF; /*Light biblical tone */
+    margin-bottom: 16;
 }
 .icon {
-    margin-bottom: 16,
+    font-size: larger;
 }
 .message {
     margin-top: 16;

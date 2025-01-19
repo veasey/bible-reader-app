@@ -4,7 +4,7 @@ import './LoadingThrobber.css';
 const LoadingThrobber = ({ message }) => {
   return (
     <div className="container">
-      <div className="icon">˗ˏˋ ✞ ˎˊ˗ {message && <span className="message">{message}</span>}</div>
+      <div><span className="icon">˗ˏˋ ✞ ˎˊ˗</span>{message && <span className="message">&nbsp;{message}</span>}</div>
     </div>
   );
 };
