@@ -23,6 +23,11 @@ KJV is from https://www.gutenberg.org/cache/epub/30/pg30-images.html
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
 
+## Bugs
+
+- [ ] Error with No results
+- [ ] Error with books with a number prefix (i.e. 2 Samuel)
+
 ---
 
 # Getting Started with Create React App
