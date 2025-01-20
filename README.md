@@ -25,8 +25,8 @@ KJV is from https://www.gutenberg.org/cache/epub/30/pg30-images.html
 
 ## Bugs
 
-- [ ] Error with No results
-- [ ] Error with books with a number prefix (i.e. 2 Samuel)
+- [x] Error with No results
+- [x] Error with books with a number prefix (i.e. 2 Samuel)
 
 ---
 

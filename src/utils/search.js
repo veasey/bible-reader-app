@@ -67,7 +67,7 @@ const findChapter = (query, bible) => {
 
 const findVerse = (query, bible) => {
 
-  const regex = /^([a-zA-Z]+)\s(\d+):(\d+)$/i;
+  const regex = /^(\d*\s?[a-zA-Z]+)\s(\d+):(\d+)$/i;
   const match = query.toLowerCase().trim().match(regex);
   
   if (match) {
@@ -97,9 +97,8 @@ export const handleSearch = (query, bible) => {
     const normalizedQuery = query.toLowerCase();
     let results = [];
 
-    const regexVerse = /^[a-zA-Z]+\s+\d+:\d+$/i;
-
     // Option 3: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
+    const regexVerse = /^\d*\s?[a-zA-Z]+\s+\d+:\d+$/i;
     if (regexVerse.test(normalizedQuery)) {
       results = [...results, ...findVerse(normalizedQuery, bible, books)];
     }
