@@ -28,6 +28,20 @@ const SearchBar = ({bible, books}) => {
         }       
     }
 
+    const FoundVerses = () => {
+        return (
+            results && results.length > 0 && (
+                <div>
+                    {results.map((result, index) => (
+                    <p key={index}>
+                        <strong>{result.book} {result.chapter}:{result.verse}</strong> - {result.text}
+                    </p>
+                    ))}
+                </div>
+            )
+        );
+    }
+
     return (
         <>
             <input
@@ -38,16 +52,10 @@ const SearchBar = ({bible, books}) => {
                 style={{ marginRight: '10px' }}
             />
             {loading && <LoadingThrobber message="Searching for verses..." />}
-            {query && !results && <div><p>No results found</p></div>}
-            {results && 
-            <div>
-                {results.map((result, index) => (
-                <p key={index}>
-                    <strong>{result.book} {result.chapter}:{result.verse}</strong> - {result.text}
-                </p>
-                ))}
-            </div>
-            }
+            {query && query.length > 0 && results?.length === 0 && (
+                <div><p>No results found</p></div>
+            )}
+            <FoundVerses />
         </>
     );
 }
