@@ -17,7 +17,7 @@ const getVerseFromBible = (ids, bible) => {
   chapterId = padDigits(chapterId);
   verseId   = padDigits(verseId);
 
-  return bible[bookId][chapterId][verseId];
+  return bible?.[bookId]?.[chapterId]?.[verseId] ?? undefined;
 }
 
 const findVersesByQuery = (query, bible) => {
@@ -100,17 +100,17 @@ export const handleSearch = (query, bible) => {
     const regexVerse = /^[a-zA-Z]+\s+\d+:\d+$/i;
 
     // Option 3: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
-    if (regexVerse.test(normalizedQuery)) { console.log('opt3');
+    if (regexVerse.test(normalizedQuery)) {
       results = [...results, ...findVerse(normalizedQuery, bible, books)];
     }
 
     // Option 2: Check for "book chapter" (e.g., "1 john 3" or "john 3")
-    if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) { console.log('opt2');
+    if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) {
       results = [...results, ...findChapter(normalizedQuery, bible, books)];
     }
 
     // Option 1: Book name only (e.g., "1 John" or "John")
-    if (new RegExp(`^[1-3]?\\s*(${bookPattern})$`).test(normalizedQuery)) { console.log('opt1');
+    if (new RegExp(`^[1-3]?\\s*(${bookPattern})$`).test(normalizedQuery)) {
       results = [...results, ...findBook(normalizedQuery, bible, books)];
     }
         
