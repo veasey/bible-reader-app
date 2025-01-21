@@ -2,3 +2,12 @@
     padding: "20px";
     font-family: "Arial, sans-serif";
 }
+
+.book-menu-lists {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
