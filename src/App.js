@@ -8,6 +8,7 @@ const currentTranslation = 'kjv';
 const BibleApp = () => {
 
   const [bible, setBible] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null);
   
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
@@ -18,9 +19,9 @@ const BibleApp = () => {
 
   return (
     <div>
-      <BookMenu />
+      <BookMenu onBookSelect={setSelectedBook}/>
       <h1>King James Bible</h1>
-      <SearchBar bible={bible} />
+      <SearchBar bible={bible} selectedBook={selectedBook} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './BookMenu.css';
 import { books } from '../constants/books.js';
 
-const BookMenu = ({ message }) => {
+const BookMenu = ({ onBookSelect }) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -28,8 +28,10 @@ const BookMenu = ({ message }) => {
                     <div>
                         <h2>Old Testament</h2>
                         <ul>
-                            {oldTestamentBooks.map((item, index) => (
-                                <li key={`cat1-${index}`}>{item.name}</li>
+                            {oldTestamentBooks.map((book, index) => (
+                                <li key={`old-${index}`} onClick={() => onBookSelect(book)}>
+                                    {book.name}
+                                </li>
                             ))}
                         </ul>
                     </div>
@@ -37,7 +39,7 @@ const BookMenu = ({ message }) => {
                         <h2>New Testament</h2>
                         <ul>
                             {newTestamentBooks.map((item, index) => (
-                                <li key={`cat2-${index}`}>{item.name}</li>
+                                <li key={`new-${index}`}>{item.name}</li>
                             ))}
                         </ul>
                     </div>

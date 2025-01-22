@@ -3,7 +3,7 @@ import { handleSearch } from '../utils/search';
 import debounce from 'lodash/debounce';
 import LoadingThrobber from './LoadingThrobber';
 
-const SearchBar = ({bible, books}) => {
+const SearchBar = ({bible, selectedBook}) => {
 
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
@@ -12,11 +12,11 @@ const SearchBar = ({bible, books}) => {
     // eslint-disable-next-line
     const debouncedSearch = useCallback(
         debounce((searchQuery) => {
-            const results = handleSearch(searchQuery, bible, books);
+            const results = handleSearch(searchQuery, bible);
             setResults(results);
             setLoading(false);
         }, 1500), // 1500ms debounce delay
-        [bible, books] 
+        [bible] 
     );
 
     const onSearch = (event) => {
@@ -55,6 +55,9 @@ const SearchBar = ({bible, books}) => {
             {query && query.length > 0 && results?.length === 0 && (
                 <div><p>No results found</p></div>
             )}
+            {selectedBook && 
+                <h2>Selected Book {selectedBook.name}</h2>
+            }
             <FoundVerses />
         </>
     );
