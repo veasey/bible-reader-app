@@ -5,13 +5,45 @@ import { books } from '../constants/books.js';
 const BookMenu = ({ onBookSelect }) => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const oldTestamentBooks = books.slice(0,40);
+    const newTestamentBooks = books.slice(40);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
-    const oldTestamentBooks = books.slice(0,40);
-    const newTestamentBooks = books.slice(40);
+    const ClickableBookName = (book, index, keyPrefix) => {
+
+        console.log(book);
+        const [isClicked, setIsClicked] = useState(false);
+
+        const handleBookClick = (book) => {
+            onBookSelect(book);
+            setIsClicked(!isClicked);
+        }
+
+        return (
+            <li key={`${keyPrefix}-${index}`} 
+                onClick={() => handleBookClick(book.book)}
+                className={isClicked ? "selected" : ""}
+            >
+                {book.book.name}
+            </li>
+        );        
+    };
+
+    const BookList = ({heading, books, keyPrefix}) => {
+        return (
+            <div className="book-menu-list">
+                <h2>{heading}</h2>
+                <ul>
+                    {books.map((book, index) => (
+                        <ClickableBookName book={book} index={index} keyPrefix={keyPrefix} />
+                    ))}
+                </ul>
+            </div>
+        );
+    }   
 
     return (
         <div className='book-menu-container'>
@@ -25,24 +57,8 @@ const BookMenu = ({ onBookSelect }) => {
             <div>
                 <h1>Menu</h1>
                 <div className="book-menu-lists">
-                    <div>
-                        <h2>Old Testament</h2>
-                        <ul>
-                            {oldTestamentBooks.map((book, index) => (
-                                <li key={`old-${index}`} onClick={() => onBookSelect(book)}>
-                                    {book.name}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div>
-                        <h2>New Testament</h2>
-                        <ul>
-                            {newTestamentBooks.map((item, index) => (
-                                <li key={`new-${index}`}>{item.name}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <BookList heading="Old Testament" books={oldTestamentBooks} prefix="old" />
+                    <BookList heading="New Testament" books={newTestamentBooks} prefix="new" />
                 </div>
             </div>
         )}

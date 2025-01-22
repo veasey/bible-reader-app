@@ -11,3 +11,16 @@
     margin-top: 20px;
 }
 
+.book-menu-list {
+    flex: 1;
+}
+
+.book-menu-lists ul li:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+.book-menu-lists ul li.selected {
+    font-weight: bold;
+    background-color: aquamarine;
+}
