@@ -5,6 +5,7 @@ import { books } from '../constants/books.js';
 const BookMenu = ({ onBookSelect }) => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [selectedBook, setSelectedBook] = useState(null);
     const oldTestamentBooks = books.slice(0,40);
     const newTestamentBooks = books.slice(40);
 
@@ -12,18 +13,18 @@ const BookMenu = ({ onBookSelect }) => {
         setIsOpen(!isOpen);
     };
 
-    const ClickableBookName = (book, index, keyPrefix) => {
+    const ClickableBookName = (book, index, key) => {
 
-        console.log(book);
         const [isClicked, setIsClicked] = useState(false);
 
         const handleBookClick = (book) => {
             onBookSelect(book);
+            setSelectedBook(book);
             setIsClicked(!isClicked);
         }
 
         return (
-            <li key={`${keyPrefix}-${index}`} 
+            <li key={key}
                 onClick={() => handleBookClick(book.book)}
                 className={isClicked ? "selected" : ""}
             >
@@ -32,13 +33,14 @@ const BookMenu = ({ onBookSelect }) => {
         );        
     };
 
-    const BookList = ({heading, books, keyPrefix}) => {
+    const BookList = ({heading, books, prefix}) => {
+
         return (
             <div className="book-menu-list">
                 <h2>{heading}</h2>
                 <ul>
                     {books.map((book, index) => (
-                        <ClickableBookName book={book} index={index} keyPrefix={keyPrefix} />
+                        <ClickableBookName book={book} index={index} key={prefix + index} />
                     ))}
                 </ul>
             </div>
@@ -50,7 +52,7 @@ const BookMenu = ({ onBookSelect }) => {
 
         {/* Burger Icon */}
         <button className="burger-icon" onClick={toggleMenu}>
-            {isOpen ? "✕" : "☰"}
+            {isOpen ? "✕" : "☰"} {selectedBook ? selectedBook.name : 'Select Book'}
         </button>
 
         {isOpen && (

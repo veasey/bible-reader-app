@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import BookMenu from './components/BookMenu';
+import ChapterMenu from './components/ChapterMenu';
 import './App.css';
 
 const currentTranslation = 'kjv';
@@ -19,7 +20,8 @@ const BibleApp = () => {
 
   return (
     <div>
-      <BookMenu onBookSelect={setSelectedBook}/>
+      <BookMenu onBookSelect={setSelectedBook} />
+      <ChapterMenu book={selectedBook ? bible[selectedBook.key] : null} />
       <h1>King James Bible</h1>
       <SearchBar bible={bible} selectedBook={selectedBook} />
     </div>
