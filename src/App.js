@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import BookMenu from './components/BookMenu';
-import ChapterMenu from './components/ChapterMenu';
 import './App.css';
 
 const currentTranslation = 'kjv';
@@ -9,7 +8,9 @@ const currentTranslation = 'kjv';
 const BibleApp = () => {
 
   const [bible, setBible] = useState(null);
-  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState(false);
+  const [selectedVerse, setSelectedVerse] = useState(false);
   
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
@@ -20,10 +21,15 @@ const BibleApp = () => {
 
   return (
     <div>
-      <div classname="book-menu-container">
-        <BookMenu onBookSelect={setSelectedBook} />
-        <ChapterMenu book={selectedBook ? bible[selectedBook.key] : null} />
-      </div>
+      <BookMenu 
+        bible={bible}
+        onBookSelect={setSelectedBook} 
+        onChapterSelect={setSelectedChapter} 
+        onVerseSelect={setSelectedVerse}
+        selectedBook={selectedBook}
+        selectedChapter={selectedChapter}
+        selectedVerse={selectedVerse}
+      />
       <h1>King James Bible</h1>
       <SearchBar bible={bible} selectedBook={selectedBook} />
     </div>

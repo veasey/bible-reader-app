@@ -13,7 +13,9 @@ If there is a better place to keep these, let me know.
 
 - [x] Error with No results
 - [x] Error with books with a number prefix (i.e. 2 Samuel)
-- [ ] Chapter Select
+- [x] Chapter Select
+- [ ] Chapter Select starting on 1, instead of null
+- [ ] verse select
 
 ## ideas
 

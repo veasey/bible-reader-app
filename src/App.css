@@ -3,11 +3,3 @@ body {
   background-color: #61dafb;
   padding: 20px;
 }
-
-book-menu-container {
-  display: flex;
-}
-
-book-menu-container div {
-  flex: 1;
-}

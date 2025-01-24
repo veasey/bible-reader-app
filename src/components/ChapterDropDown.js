@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 
-const ChapterMenu = ({ book }) => {
-
+const ChapterMenu = ({ bible, selectedBook, onChapterSelect }) => {
+    
     const [selectedChapter, setSelectedChapter] = useState(null);
 
-    if (!book) {
+    if (!selectedBook) {
         return;
     }
 
-    const chapters = Object.keys(book).map(num => parseInt(num, 10).toString());
-    console.log(chapters);
-
+    const chapterNumbers = Object.keys(bible[selectedBook.key]).map(num => parseInt(num, 10).toString());
+    
     const handleChange = (event) => {
         const selectedValue = event.target.value;
         setSelectedChapter(selectedValue);
+        onChapterSelect(selectedChapter);
     };
 
     return (
@@ -27,7 +27,7 @@ const ChapterMenu = ({ book }) => {
                     <option value="" disabled>
                         -- Choose a chapter --
                     </option>
-                    {chapters.map((chapter) => (
+                    {chapterNumbers.map((chapter) => (
                         <option key={chapter} value={chapter}>
                             Chapter {chapter}
                         </option>
