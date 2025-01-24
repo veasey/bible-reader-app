@@ -21,6 +21,7 @@ const BookMenu = ({ onBookSelect }) => {
             onBookSelect(book);
             setSelectedBook(book);
             setIsClicked(!isClicked);
+            setIsOpen(false);
         }
 
         return (

@@ -20,8 +20,10 @@ const BibleApp = () => {
 
   return (
     <div>
-      <BookMenu onBookSelect={setSelectedBook} />
-      <ChapterMenu book={selectedBook ? bible[selectedBook.key] : null} />
+      <div classname="book-menu-container">
+        <BookMenu onBookSelect={setSelectedBook} />
+        <ChapterMenu book={selectedBook ? bible[selectedBook.key] : null} />
+      </div>
       <h1>King James Bible</h1>
       <SearchBar bible={bible} selectedBook={selectedBook} />
     </div>
