@@ -1,34 +1,32 @@
 import React from 'react';
+import { fetchChapter } from '../utils/fetch.js';
 
-const VerseDropDown = ({ bible, selectedBook, selectedChapter, onVerseSelect, selectedVerse }) => {
+const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, onVerseSelect }) => {
 
-    if (!selectedChapter) {
+    if (!selectedBook || !selectedChapter) {
         return;
     }
 
-    const verses = Object.keys(bible[selectedBook.key][selectedChapter.key]).map(num => parseInt(num, 10).toString());
+    const verses = fetchChapter([selectedBook.key, selectedChapter], bible);
+    console.log(verses);
 
     const handleChange = (event) => {
-        const selectedValue = event.target.value;
-        onVerseSelect(selectedValue);
+        onVerseSelect(event.target.value);
     };
 
     return (
         <div>
             <label htmlFor="verseDropdown">Select a Verse:</label>
-                <select
-                    id="verseDropdown"
-                    value={selectedVerse}
-                    onChange={handleChange}
-                >
-                    <option value="" disabled>
-                        -- Choose a verse --
+            <select
+                id="verseDropdown"
+                value={selectedVerse}
+                onChange={handleChange}
+            >
+                {Object.entries(verses).map(([key, verse]) => (
+                    <option key={key} value={verse}>
+                        Verse {key}
                     </option>
-                    {verses.map((verse, index) => (
-                        <option key={index} value={verse}>
-                            Verse {index}
-                        </option>
-                    ))}
+                ))}
             </select>
         </div>
     );

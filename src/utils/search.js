@@ -1,33 +1,8 @@
 import { books } from '../constants/books.js';
-
-/**
- * @note.
- * Can bible / books be global to all methods here?
- * - shared logic between two written methods, findversesbyquery and find verse?
- * - perhaps skip get book, as this will be via menu???
- */
-
-const getVerseFromBible = (ids, bible) => {
-
-  const padDigits = (num, length = 3) => num.toString().padStart(length, '0');
-
-  let [bookId, chapterId, verseId] = ids;
-
-  bookId    = padDigits(bookId, 2);
-  chapterId = padDigits(chapterId);
-  verseId   = padDigits(verseId);
-
-  return bible?.[bookId]?.[chapterId]?.[verseId] ?? undefined;
-}
+import { removeLeadingZeros } from '../utils/format.js';
+import { fetchVerse, fetchChapter, fetchBook } from '../utils/fetch.js';
 
 const findVersesByQuery = (query, bible) => {
-
-  const removeLeadingZeros = (paddedNum) => {
-    if (!paddedNum || isNaN(paddedNum)) {
-      return "Invalid input";
-    }
-    return parseInt(paddedNum, 10);
-  }
   
   const bookIds = Object.keys(bible);
   let results = [];
@@ -41,7 +16,7 @@ const findVersesByQuery = (query, bible) => {
       for (const verseId of verseIds) {
 
         const ids = [bookId, chapterId, verseId];
-        const verseText = getVerseFromBible(ids, bible);
+        const verseText = fetchVerse(ids, bible);
         if (verseText.toLowerCase().includes(query.toLowerCase())) {
           results.push({
             book:     books.find((b) => bookId === b.key)?.name,
@@ -57,14 +32,6 @@ const findVersesByQuery = (query, bible) => {
   return results;
 }
 
-const findBook  = (query, bible) => {
-  return [];
-}
-
-const findChapter = (query, bible) => {
-  return [];
-}
-
 const findVerse = (query, bible) => {
 
   const regex = /^(\d*\s?[a-zA-Z]+)\s(\d+):(\d+)$/i;
@@ -74,7 +41,7 @@ const findVerse = (query, bible) => {
     const { key: bookId, name: bookName } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
 
     const ids = [bookId, match[2], match[3]];
-    const verseText = getVerseFromBible(ids, bible);
+    const verseText = fetchVerse(ids, bible);
     
     if (verseText && verseText.length) {
       return [{
@@ -105,13 +72,13 @@ export const handleSearch = (query, bible) => {
 
     // Option 2: Check for "book chapter" (e.g., "1 john 3" or "john 3")
     if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) {
-      results = [...results, ...findChapter(normalizedQuery, bible, books)];
+      results = [...results, ...fetchChapter(normalizedQuery, bible, books)];
     }
 
     // Option 1: Book name only (e.g., "1 John" or "John")
     if (new RegExp(`^[1-3]?\\s*(${bookPattern})$`).test(normalizedQuery)) {
-      results = [...results, ...findBook(normalizedQuery, bible, books)];
+      results = [...results, ...fetchBook(normalizedQuery, bible, books)];
     }
         
     return [...results, ...findVersesByQuery(normalizedQuery, bible, books)];
-  };
+};

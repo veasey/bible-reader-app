@@ -60,8 +60,8 @@ const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selecte
                 </div>
 
                 {/* Chapter Drop DOwn */}
-                <ChapterDropDown bible={bible} selectedBook={selectedBook} onChapterSelect={onChapterSelect} />
-                <VerseDropDown bible={bible} selectedChapter={selectedChapter} onVerseSelect={onVerseSelect} selectedVerse={selectedVerse} />
+                <ChapterDropDown bible={bible} selectedBook={selectedBook} onChapterSelect={onChapterSelect} selectedChapter={selectedChapter} />
+                <VerseDropDown bible={bible} selectedBook={selectedBook} selectedChapter={selectedChapter} selectedVerse={selectedVerse} onVerseSelect={onVerseSelect} />
             </div>
 
             {/* Drop Down Formatted  Book List */}

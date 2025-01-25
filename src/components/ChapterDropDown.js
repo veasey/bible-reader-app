@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React  from 'react';
 
-const ChapterMenu = ({ bible, selectedBook, onChapterSelect }) => {
+const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter }) => {
     
-    const [selectedChapter, setSelectedChapter] = useState(null);
-
     if (!selectedBook) {
         return;
     }
@@ -11,9 +9,7 @@ const ChapterMenu = ({ bible, selectedBook, onChapterSelect }) => {
     const chapterNumbers = Object.keys(bible[selectedBook.key]).map(num => parseInt(num, 10).toString());
     
     const handleChange = (event) => {
-        const selectedValue = event.target.value;
-        setSelectedChapter(selectedValue);
-        onChapterSelect(selectedChapter);
+        onChapterSelect(event.target.value);
     };
 
     return (
@@ -24,9 +20,6 @@ const ChapterMenu = ({ bible, selectedBook, onChapterSelect }) => {
                     value={selectedChapter}
                     onChange={handleChange}
                 >
-                    <option value="" disabled>
-                        -- Choose a chapter --
-                    </option>
                     {chapterNumbers.map((chapter) => (
                         <option key={chapter} value={chapter}>
                             Chapter {chapter}

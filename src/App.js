@@ -9,8 +9,8 @@ const BibleApp = () => {
 
   const [bible, setBible] = useState(null);
   const [selectedBook, setSelectedBook] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState(false);
-  const [selectedVerse, setSelectedVerse] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState(1);
+  const [selectedVerse, setSelectedVerse] = useState(1);
   
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
