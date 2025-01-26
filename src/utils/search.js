@@ -7,6 +7,10 @@ const findVersesByQuery = (query, bible) => {
   const bookIds = Object.keys(bible);
   let results = [];
 
+  if (!query) {
+    return results;
+  }
+
   for (const bookId of bookIds) {
 
     const chapterIds = Object.keys(bible[bookId]);
@@ -16,7 +20,8 @@ const findVersesByQuery = (query, bible) => {
       for (const verseId of verseIds) {
 
         const ids = [bookId, chapterId, verseId];
-        const verseText = fetchVerse(ids, bible);
+        const verse = fetchVerse(ids, bible);
+        let verseText = verse.text;
         if (verseText.toLowerCase().includes(query.toLowerCase())) {
           results.push({
             book:     books.find((b) => bookId === b.key)?.name,
@@ -40,17 +45,8 @@ const findVerse = (query, bible) => {
   if (match) {
     const { key: bookId, name: bookName } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
 
-    const ids = [bookId, match[2], match[3]];
-    const verseText = fetchVerse(ids, bible);
-    
-    if (verseText && verseText.length) {
-      return [{
-        book:     bookName,
-        chapter:  match[2],
-        verse:    match[3],
-        text:     verseText,
-      }];
-    }
+    const ids = [bookId, bookName, match[3]];
+    return fetchVerse(ids, bible);
   }
 
   return [];

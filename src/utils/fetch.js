@@ -1,5 +1,5 @@
+import { padDigits, removeLeadingZeros } from '../utils/format.js';
 import { books } from '../constants/books.js';
-import { removeLeadingZeros, padDigits } from '../utils/format.js';
 
 /**
  * @note.
@@ -8,14 +8,24 @@ import { removeLeadingZeros, padDigits } from '../utils/format.js';
  * - perhaps skip get book, as this will be via menu???
  */
 export const fetchVerse = (ids, bible) => {
-  
+
     let [bookId, chapterId, verseId] = ids;
+    let results = [];
+    
+    if (!bookId || !chapterId || !verseId) {
+        return results;
+    }
   
     bookId    = padDigits(bookId, 2);
     chapterId = padDigits(chapterId);
     verseId   = padDigits(verseId);
-  
-    return bible?.[bookId]?.[chapterId]?.[verseId] ?? undefined;
+
+    results.push({
+        book:     books.find((b) => bookId === b.key)?.name,
+        chapter:  removeLeadingZeros(chapterId),
+        verse:    removeLeadingZeros(verseId),
+        text:     bible?.[bookId]?.[chapterId]?.[verseId] ?? undefined
+    });
 };
 
 export const fetchChapter = (ids, bible) => {

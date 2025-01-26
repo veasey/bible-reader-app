@@ -3,17 +3,15 @@ import { handleSearch } from '../utils/search';
 import debounce from 'lodash/debounce';
 import LoadingThrobber from './LoadingThrobber';
 
-const SearchBar = ({bible, selectedBook}) => {
+const SearchBar = ({bible, onSearchResult, verses}) => {
 
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    // eslint-disable-next-line
     const debouncedSearch = useCallback(
         debounce((searchQuery) => {
             const results = handleSearch(searchQuery, bible);
-            setResults(results);
+            onSearchResult(results);
             setLoading(false);
         }, 1500), // 1500ms debounce delay
         [bible] 
@@ -28,20 +26,6 @@ const SearchBar = ({bible, selectedBook}) => {
         }       
     }
 
-    const FoundVerses = () => {
-        return (
-            results && results.length > 0 && (
-                <div>
-                    {results.map((result, index) => (
-                    <p key={index}>
-                        <strong>{result.book} {result.chapter}:{result.verse}</strong> - {result.text}
-                    </p>
-                    ))}
-                </div>
-            )
-        );
-    }
-
     return (
         <>
             <input
@@ -52,13 +36,9 @@ const SearchBar = ({bible, selectedBook}) => {
                 style={{ marginRight: '10px' }}
             />
             {loading && <LoadingThrobber message="Searching for verses..." />}
-            {query && query.length > 0 && results?.length === 0 && (
+            {query && query.length > 0 && verses?.length === 0 && (
                 <div><p>No results found</p></div>
             )}
-            {selectedBook && 
-                <h2>Selected Book {selectedBook.name}</h2>
-            }
-            <FoundVerses />
         </>
     );
 }
