@@ -8,7 +8,6 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
     }
 
     const verses = fetchChapter([selectedBook.key, selectedChapter], bible);
-    console.log(verses);
 
     const handleChange = (event) => {
         onVerseSelect(event.target.value);
