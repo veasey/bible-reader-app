@@ -4,18 +4,20 @@ If there is a better place to keep these, let me know.
 
 ## Todo
 
+There is not order to these todos
+
 - [X] Loading
-- [ ] Book Select Menu
+- [x] Book Select Menu
+  - [ ] get selection buttons to select Verse
+  - [ ] changing to new book, defaults to verse 1
+- [ ] Display entire chapter (as an option)
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
-
-## Bugs
-
-- [x] Error with No results
-- [x] Error with books with a number prefix (i.e. 2 Samuel)
-- [x] Chapter Select
-- [ ] Chapter Select starting on 1, instead of null
-- [ ] verse select
+- [ ] Show Next and Prev buttons
+- [ ] Show a Random Verse button
+- [ ] Session Var, remember where user left off.
+   - [ ] Show Random verse by default, if no session found.
+- [ ] select alt translation (just add a NLT etc, just to test and adapt for it)
 
 ## ideas
 

@@ -24,7 +24,7 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
             >
                 {Object.entries(verses).map(([key, verse]) => (
                     <option key={key} value={verse}>
-                        Verse {key}
+                        Verse {parseInt(key, 10).toString()}
                     </option>
                 ))}
             </select>

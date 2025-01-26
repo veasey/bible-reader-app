@@ -12,6 +12,7 @@ const BibleApp = () => {
   const [selectedChapter, setSelectedChapter] = useState(1);
   const [selectedVerse, setSelectedVerse] = useState(1);
   
+  
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
       .then((response) => response.json())
