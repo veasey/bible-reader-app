@@ -10,15 +10,15 @@ const currentTranslation = 'kjv';
 const BibleApp = () => {
 
   // bible data
-  const [bible, setBible] = useState(null);
+  const [bible, setBible] = useState(false);
   
   // coords for specific verses
   const [selectedBook, setSelectedBook] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState(1);
-  const [selectedVerse, setSelectedVerse] = useState(null);
+  const [selectedChapter, setSelectedChapter] = useState(false);
+  const [selectedVerse, setSelectedVerse] = useState(false);
 
   // results from searches, or specified coors
-  const [verses, setVerses] = useState([]);
+  const [verses, setVerses] = useState(false);
   
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
@@ -28,7 +28,11 @@ const BibleApp = () => {
   }, []);  
 
   useEffect(() => {
-    setVerses([fetchVerse([selectedBook, selectedChapter, selectedVerse], bible)]);
+    let verse = fetchVerse([selectedBook, selectedChapter, selectedVerse], bible);
+    console.log(verse);
+    if (verse) {
+      setVerses(verse);
+    }
   }, [selectedBook, selectedChapter, selectedVerse, bible]);
 
   return (

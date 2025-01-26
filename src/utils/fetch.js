@@ -9,11 +9,13 @@ import { books } from '../constants/books.js';
  */
 export const fetchVerse = (ids, bible) => {
 
+    console.log(ids);
+
     let [bookId, chapterId, verseId] = ids;
     let results = [];
     
     if (!bookId || !chapterId || !verseId) {
-        return results;
+        return false;
     }
   
     bookId    = padDigits(bookId, 2);

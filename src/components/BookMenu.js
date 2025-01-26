@@ -7,6 +7,7 @@ import VerseDropDown from './VerseDropDown';
 const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selectedBook, selectedChapter, selectedVerse }) => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [bookName, setBookName] = useState('');
 
     const oldTestamentBooks = books.slice(0,40);
     const newTestamentBooks = books.slice(40);
@@ -21,7 +22,9 @@ const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selecte
         const book = b.book; // @hack: unsure why array map puts object under parent of itself
 
         const handleBookClick = (book) => {
-            onBookSelect(book);
+
+            onBookSelect(book.key);
+            setBookName(book.name);
             setIsClicked(!isClicked);
             setIsOpen(false);
         }
@@ -55,7 +58,7 @@ const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selecte
                 {/* Burger Icon */}
                 <div>
                     <button className="burger-icon" onClick={toggleMenu}>
-                        {isOpen ? "✕" : "☰"} {selectedBook ? selectedBook.name : 'Select Book'}
+                        {isOpen ? "✕" : "☰"} {bookName ? bookName : 'Select Book'}
                     </button>
                 </div>
 

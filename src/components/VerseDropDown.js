@@ -7,7 +7,7 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
         return;
     }
 
-    const verses = fetchChapter([selectedBook.key, selectedChapter], bible);
+    const verses = fetchChapter([selectedBook, selectedChapter], bible);
 
     const handleChange = (event) => {
         onVerseSelect(event.target.value);
@@ -22,7 +22,7 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
                 onChange={handleChange}
             >
                 {Object.entries(verses).map(([key, verse]) => (
-                    <option key={key} value={verse}>
+                    <option key={key} value={key}>
                         Verse {parseInt(key, 10).toString()}
                     </option>
                 ))}

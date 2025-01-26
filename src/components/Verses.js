@@ -3,9 +3,11 @@
  */
 const Verses = ({verses}) => {
 
-    if (!verses) {
-        return;
+    if (!verses || !Array.isArray(verses)) {
+        return null; // Ensure the component gracefully handles invalid input
     }
+
+    console.log(verses);
 
     return (
         <div>
