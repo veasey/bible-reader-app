@@ -25,6 +25,8 @@ const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selecte
 
             onBookSelect(book.key);
             setBookName(book.name);
+            onChapterSelect(1);
+            onVerseSelect(1);
             setIsClicked(!isClicked);
             setIsOpen(false);
         }
@@ -63,7 +65,7 @@ const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selecte
                 </div>
 
                 {/* Chapter Drop DOwn */}
-                <ChapterDropDown bible={bible} selectedBook={selectedBook} onChapterSelect={onChapterSelect} selectedChapter={selectedChapter} />
+                <ChapterDropDown bible={bible} selectedBook={selectedBook} onChapterSelect={onChapterSelect} selectedChapter={selectedChapter} onVerseSelect={onVerseSelect} />
                 <VerseDropDown bible={bible} selectedBook={selectedBook} selectedChapter={selectedChapter} selectedVerse={selectedVerse} onVerseSelect={onVerseSelect} />
             </div>
 

@@ -1,6 +1,6 @@
 import React  from 'react';
 
-const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter }) => {
+const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter, onVerseSelect }) => {
     
     if (!selectedBook) {
         return;
@@ -10,6 +10,7 @@ const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter }) 
     
     const handleChange = (event) => {
         onChapterSelect(event.target.value);
+        onVerseSelect(1);
     };
 
     return (
