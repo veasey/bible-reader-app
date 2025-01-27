@@ -21,14 +21,18 @@ const findVersesByQuery = (query, bible) => {
 
         const ids = [bookId, chapterId, verseId];
         const verse = fetchVerse(ids, bible);
-        let verseText = verse.text;
-        if (verseText.toLowerCase().includes(query.toLowerCase())) {
-          results.push({
-            book:     books.find((b) => bookId === b.key)?.name,
-            chapter:  removeLeadingZeros(chapterId),
-            verse:    removeLeadingZeros(verseId),
-            text:     verseText
-          });
+
+        if (verse) {
+
+          let verseText = verse.text;
+          if (verseText.toLowerCase().includes(query.toLowerCase())) {
+            results.push({
+              book:     books.find((b) => bookId === b.key)?.name,
+              chapter:  removeLeadingZeros(chapterId),
+              verse:    removeLeadingZeros(verseId),
+              text:     verseText
+            });
+          }
         }
       }
     }

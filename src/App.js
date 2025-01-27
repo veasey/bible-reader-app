@@ -30,7 +30,7 @@ const BibleApp = () => {
   useEffect(() => {
     let verse = fetchVerse([selectedBook, selectedChapter, selectedVerse], bible);
     if (verse) {
-      setVerses(verse);
+      setVerses([verse]);
     }
   }, [selectedBook, selectedChapter, selectedVerse, bible]);
 
