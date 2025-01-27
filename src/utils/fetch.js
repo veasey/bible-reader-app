@@ -18,9 +18,6 @@ export const fetchVerse = (ids, bible) => {
     chapterId = padDigits(chapterId);
     verseId   = padDigits(verseId);
 
-    console.log('verse');
-    console.log(bible?.[bookId]?.[chapterId]?.[verseId]);
-
     return [{
         book:     books.find((b) => bookId === b.key)?.name,
         chapter:  removeLeadingZeros(chapterId),
