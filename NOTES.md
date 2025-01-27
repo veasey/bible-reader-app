@@ -8,7 +8,7 @@ There is not order to these todos
 
 - [ ] 🐛 Search for Verse using search syntax
   - [ ] Set state vars to reflect single verse searched and retrieved.
-
+  
 - [ ] Display entire chapter (as an option)
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
@@ -17,6 +17,7 @@ There is not order to these todos
 - [ ] Session Var, remember where user left off.
    - [ ] Show Random verse by default, if no session found.
 - [ ] select alt translation (just add a NLT etc, just to test and adapt for it)
+- [ ] When clicking Book or Chapter in result, take to top of that result list.
 
 ## ideas
 
