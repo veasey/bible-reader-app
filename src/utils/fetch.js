@@ -9,9 +9,6 @@ import { books } from '../constants/books.js';
  */
 export const fetchVerse = (ids, bible) => {
 
-    console.log('fetch verse ids: ');
-    console.log(ids);
-
     let [bookId, chapterId, verseId] = ids;    
     if (!bookId || !chapterId || !verseId) {
         return false;
