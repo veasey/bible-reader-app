@@ -29,6 +29,7 @@ const BibleApp = () => {
 
   useEffect(() => {
     let verse = fetchVerse([selectedBook, selectedChapter, selectedVerse], bible);
+    console.log('retrieved verse');
     console.log(verse);
     if (verse) {
       setVerses(verse);

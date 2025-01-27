@@ -9,11 +9,10 @@ import { books } from '../constants/books.js';
  */
 export const fetchVerse = (ids, bible) => {
 
+    console.log('fetch verse ids: ');
     console.log(ids);
 
-    let [bookId, chapterId, verseId] = ids;
-    let results = [];
-    
+    let [bookId, chapterId, verseId] = ids;    
     if (!bookId || !chapterId || !verseId) {
         return false;
     }
@@ -22,12 +21,15 @@ export const fetchVerse = (ids, bible) => {
     chapterId = padDigits(chapterId);
     verseId   = padDigits(verseId);
 
-    results.push({
+    console.log('verse');
+    console.log(bible?.[bookId]?.[chapterId]?.[verseId]);
+
+    return [{
         book:     books.find((b) => bookId === b.key)?.name,
         chapter:  removeLeadingZeros(chapterId),
         verse:    removeLeadingZeros(verseId),
         text:     bible?.[bookId]?.[chapterId]?.[verseId] ?? undefined
-    });
+    }];
 };
 
 export const fetchChapter = (ids, bible) => {
