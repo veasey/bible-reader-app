@@ -6,10 +6,9 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [X] Loading
-- [x] Book Select Menu
-  - [ ] get selection buttons to select Verse
-  - [ ] changing to new book, defaults to verse 1
+- [ ] 🐛 Search for Verse using search syntax
+  - [ ] Set state vars to reflect single verse searched and retrieved.
+
 - [ ] Display entire chapter (as an option)
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
@@ -21,5 +20,4 @@ There is not order to these todos
 
 ## ideas
 
-1. You can improve the search with dropdown list to select a chapter rather than phrases. After choosing the chapter then another dropdown or search bar to choose a specific verse.
 2. On the Menus, when you click on a chapter on the menu, you should display all verses of the selected chapter
