@@ -1,6 +1,6 @@
 import { books } from '../constants/books.js';
 import { removeLeadingZeros } from '../utils/format.js';
-import { fetchVerse, fetchChapter, fetchBook } from '../utils/fetch.js';
+import { fetchVerse } from '../utils/fetch.js';
 
 const findVersesByQuery = (query, bible) => {
   
@@ -47,10 +47,12 @@ const findVerse = (query, bible) => {
   const match = query.toLowerCase().trim().match(regex);
   
   if (match) {
-    const { key: bookId, name: bookName } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
-
-    const ids = [bookId, bookName, match[3]];
-    return fetchVerse(ids, bible);
+    const { key: bookId } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
+    const ids = [bookId, match[2], match[3]];
+    const verse = fetchVerse(ids, bible);
+    if (verse) {
+      return [verse];
+    }
   }
 
   return [];
@@ -81,5 +83,5 @@ export const handleSearch = (query, bible) => {
     //   results = [...results, ...fetchBook(normalizedQuery, bible, books)];
     // }
         
-    return [...results, ...findVersesByQuery(normalizedQuery, bible, books)];
+    return [...results, ...findVersesByQuery(normalizedQuery, bible)];
 };

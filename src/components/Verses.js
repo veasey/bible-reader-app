@@ -7,8 +7,6 @@ const Verses = ({verses}) => {
         return null; // Ensure the component gracefully handles invalid input
     }
 
-    console.log(verses);
-
     return (
         <div>
             {verses.map((result, index) => (
