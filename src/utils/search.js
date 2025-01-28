@@ -60,7 +60,7 @@ export const handleSearch = (query, bible) => {
 
     if (!query.trim() || !bible) return;
 
-    const bookPattern = books.join("|")
+    //const bookPattern = books.join("|")
     const normalizedQuery = query.toLowerCase();
     let results = [];
 
