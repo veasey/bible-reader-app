@@ -5,27 +5,28 @@ import Verses from './components/Verses';
 import { fetchVerse } from './utils/fetch.js';
 import './App.css';
 
-const currentTranslation = 'kjv';
-
 const BibleApp = () => {
 
   // bible data
-  const [bible, setBible] = useState(false);
-  
+  const [bible, setBible] = useState('');
+  const [currentTranslation, setCurrentTranslation] = useState('kjv');
+
   // coords for specific verses
-  const [selectedBook, setSelectedBook] = useState(false);
-  const [selectedChapter, setSelectedChapter] = useState(false);
-  const [selectedVerse, setSelectedVerse] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(0);
+  const [selectedChapter, setSelectedChapter] = useState(0);
+  const [selectedVerse, setSelectedVerse] = useState(0);
 
   // results from searches, or specified coors
-  const [verses, setVerses] = useState(false);
+  const [verses, setVerses] = useState([]);
   
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
       .then((response) => response.json())
-      .then((data) => setBible(data))
+      .then((data) => {
+        setBible(data);
+      })
       .catch((error) => console.error('Error loading Bible:', error));
-  }, []);  
+  }, [currentTranslation]);  
 
   useEffect(() => {
     let verse = fetchVerse([selectedBook, selectedChapter, selectedVerse], bible);
@@ -34,13 +35,13 @@ const BibleApp = () => {
     }
   }, [selectedBook, selectedChapter, selectedVerse, bible]);
 
+  const indexState = [setSelectedBook, setSelectedChapter, setSelectedVerse];
+
   return (
     <div>
       <BookMenu 
         bible={bible}
-        onBookSelect={setSelectedBook} 
-        onChapterSelect={setSelectedChapter} 
-        onVerseSelect={setSelectedVerse}
+        indexState={indexState} 
         selectedBook={selectedBook}
         selectedChapter={selectedChapter}
         selectedVerse={selectedVerse}
@@ -48,9 +49,7 @@ const BibleApp = () => {
       <h1>King James Bible</h1>
       <SearchBar 
         bible={bible} 
-        onBookSelect={setSelectedBook} 
-        onChapterSelect={setSelectedChapter} 
-        onVerseSelect={setSelectedVerse} 
+        indexState={indexState}
         onSearchResult={setVerses} 
         verses={verses} 
       />

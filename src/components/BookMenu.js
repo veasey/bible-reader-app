@@ -4,13 +4,15 @@ import { books } from '../constants/books.js';
 import ChapterDropDown from './ChapterDropDown';
 import VerseDropDown from './VerseDropDown';
 
-const BookMenu = ({ bible, onBookSelect, onChapterSelect, onVerseSelect, selectedBook, selectedChapter, selectedVerse }) => {
+const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVerse }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [bookName, setBookName] = useState('');
 
     const oldTestamentBooks = books.slice(0,40);
     const newTestamentBooks = books.slice(40);
+
+    const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);

@@ -63,7 +63,9 @@ const findVerse = (query, bible, onBookSelect, onChapterSelect, onVerseSelect) =
   return [];
 }
 
-export const handleSearch = (query, bible, onBookSelect, onChapterSelect, onVerseSelect) => {
+export const handleSearch = (query, bible, indexState) => {
+
+    const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
 
     if (!query.trim() || !bible) return;
 
@@ -76,7 +78,6 @@ export const handleSearch = (query, bible, onBookSelect, onChapterSelect, onVers
     if (regexVerse.test(normalizedQuery)) {
       results = [...results, ...findVerse(normalizedQuery, bible, onBookSelect, onChapterSelect, onVerseSelect)];
     }
-
     
     // Option 2: Check for "book chapter" (e.g., "1 john 3" or "john 3")
     // if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) {
