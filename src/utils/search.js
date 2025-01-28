@@ -67,18 +67,19 @@ export const handleSearch = (query, bible) => {
     // Option 3: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
     const regexVerse = /^\d*\s?[a-zA-Z]+\s+\d+:\d+$/i;
     if (regexVerse.test(normalizedQuery)) {
-      results = [...results, ...findVerse(normalizedQuery, bible, books)];
+      results = [...results, ...findVerse(normalizedQuery, bible)];
     }
 
+    
     // Option 2: Check for "book chapter" (e.g., "1 john 3" or "john 3")
-    if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) {
-      results = [...results, ...fetchChapter(normalizedQuery, bible, books)];
-    }
+    // if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) {
+    //   results = [...results, ...fetchChapter(normalizedQuery, bible, books)];
+    // }
 
     // Option 1: Book name only (e.g., "1 John" or "John")
-    if (new RegExp(`^[1-3]?\\s*(${bookPattern})$`).test(normalizedQuery)) {
-      results = [...results, ...fetchBook(normalizedQuery, bible, books)];
-    }
+    // if (new RegExp(`^[1-3]?\\s*(${bookPattern})$`).test(normalizedQuery)) {
+    //   results = [...results, ...fetchBook(normalizedQuery, bible, books)];
+    // }
         
     return [...results, ...findVersesByQuery(normalizedQuery, bible, books)];
 };
