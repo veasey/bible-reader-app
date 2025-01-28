@@ -46,7 +46,14 @@ const BibleApp = () => {
         selectedVerse={selectedVerse}
       />
       <h1>King James Bible</h1>
-      <SearchBar bible={bible} onSearchResult={setVerses} verses={verses} />
+      <SearchBar 
+        bible={bible} 
+        onBookSelect={setSelectedBook} 
+        onChapterSelect={setSelectedChapter} 
+        onVerseSelect={setSelectedVerse} 
+        onSearchResult={setVerses} 
+        verses={verses} 
+      />
       <Verses verses={verses} />
     </div>
   );

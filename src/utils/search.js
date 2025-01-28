@@ -41,7 +41,7 @@ const findVersesByQuery = (query, bible) => {
   return results;
 }
 
-const findVerse = (query, bible) => {
+const findVerse = (query, bible, onBookSelect, onChapterSelect, onVerseSelect) => {
 
   const regex = /^(\d*\s?[a-zA-Z]+)\s(\d+):(\d+)$/i;
   const match = query.toLowerCase().trim().match(regex);
@@ -51,6 +51,11 @@ const findVerse = (query, bible) => {
     const ids = [bookId, match[2], match[3]];
     const verse = fetchVerse(ids, bible);
     if (verse) {
+
+      onBookSelect(bookId);
+      onChapterSelect(match[2]);
+      onVerseSelect(match[3]);
+
       return [verse];
     }
   }
@@ -58,7 +63,7 @@ const findVerse = (query, bible) => {
   return [];
 }
 
-export const handleSearch = (query, bible) => {
+export const handleSearch = (query, bible, onBookSelect, onChapterSelect, onVerseSelect) => {
 
     if (!query.trim() || !bible) return;
 
@@ -69,7 +74,7 @@ export const handleSearch = (query, bible) => {
     // Option 3: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
     const regexVerse = /^\d*\s?[a-zA-Z]+\s+\d+:\d+$/i;
     if (regexVerse.test(normalizedQuery)) {
-      results = [...results, ...findVerse(normalizedQuery, bible)];
+      results = [...results, ...findVerse(normalizedQuery, bible, onBookSelect, onChapterSelect, onVerseSelect)];
     }
 
     

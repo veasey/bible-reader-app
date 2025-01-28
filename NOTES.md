@@ -6,7 +6,7 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] 🐛 Search for Verse using search syntax
+- [x] 🐛 Search for Verse using search syntax
   - [ ] Set state vars to reflect single verse searched and retrieved.
   
 - [ ] Display entire chapter (as an option)
