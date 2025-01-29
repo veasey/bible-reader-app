@@ -74,13 +74,23 @@ const findFirstVerseFromBook = (bible, key, indexState) => {
   return [fetchVerse([key, 1, 1], bible)];
 }
 
-export const handleSearch = (query, bible, indexState) => {
+const getBibleScope = (bible, index) => {
 
+  const [bookId, chapterId, verseId] = index;
 
-    if (!query.trim() || !bible) return;
+  if (bookId) {
+    return {[bookId]: bible[bookId]};
+  }
 
-    const normalizedQuery = query.toLowerCase();
+  return bible;
+}
+
+export const handleSearch = (query, bible, indexState, index) => {
+
+    const normalizedQuery = query.toLowerCase().trim();
     let results = [];
+
+    if (normalizedQuery.length === 0 || !bible) return;
 
     // Option 1: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
     const regexChapterOrVerse = /^(\d*\s?[a-zA-Z]+)\s+(\d+)(?::(\d+))?$/i;
@@ -93,6 +103,8 @@ export const handleSearch = (query, bible, indexState) => {
     if (book) {
       results = [...results, ...findFirstVerseFromBook(bible, book, indexState)];
     }
-      
+
+    bible = getBibleScope(bible, index);
+    console.log(bible);
     return [...results, ...findVersesByQuery(normalizedQuery, bible)];
 };

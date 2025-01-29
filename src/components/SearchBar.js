@@ -3,14 +3,14 @@ import { handleSearch } from '../utils/search';
 import debounce from 'lodash/debounce';
 import LoadingThrobber from './LoadingThrobber';
 
-const SearchBar = ({bible, indexState, onSearchResult, verses}) => {
+const SearchBar = ({bible, indexState, index, onSearchResult, verses}) => {
 
     const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(false);
 
     const debouncedSearch = useCallback(
         debounce((searchQuery) => {
-            const results = handleSearch(searchQuery, bible, indexState);
+            const results = handleSearch(searchQuery, bible, indexState, index);
             onSearchResult(results);
             setLoading(false);
         }, 1500), // 1500ms debounce delay

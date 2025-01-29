@@ -37,6 +37,7 @@ const BibleApp = () => {
   }, [selectedBook, selectedChapter, selectedVerse, bible]);
 
   const indexState = [setSelectedBook, setSelectedChapter, setSelectedVerse];
+  const index = [selectedBook, selectedChapter, selectedVerse];
 
   return (
     <div>
@@ -51,6 +52,7 @@ const BibleApp = () => {
       <SearchBar 
         bible={bible} 
         indexState={indexState}
+        index={index}
         onSearchResult={setVerses} 
         verses={verses} 
       />
