@@ -1,5 +1,4 @@
 import { books } from '../constants/books.js';
-import { removeLeadingZeros } from '../utils/format.js';
 import { fetchVerse } from '../utils/fetch.js';
 
 const findVersesByQuery = (query, bible) => {
@@ -28,8 +27,8 @@ const findVersesByQuery = (query, bible) => {
           if (verseText.toLowerCase().includes(query.toLowerCase())) {
             results.push({
               book:     books.find((b) => bookId === b.key)?.name,
-              chapter:  removeLeadingZeros(chapterId),
-              verse:    removeLeadingZeros(verseId),
+              chapter:  chapterId,
+              verse:    verseId,
               text:     verseText
             });
           }

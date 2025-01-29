@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from './components/SearchBar';
 import BookMenu from './components/BookMenu';
 import Verses from './components/Verses';
+import Footer from './components/Footer';
 import { fetchVerse } from './utils/fetch.js';
 import './App.css';
 
 const BibleApp = () => {
 
   // bible data
-  const [bible, setBible] = useState('');
+  const [bible, setBible] = useState({});
   const [currentTranslation, setCurrentTranslation] = useState('kjv');
 
   // coords for specific verses
@@ -54,6 +55,7 @@ const BibleApp = () => {
         verses={verses} 
       />
       <Verses verses={verses} />
+      <Footer />
     </div>
   );
 };

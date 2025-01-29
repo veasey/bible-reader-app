@@ -24,7 +24,6 @@ const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVe
         const book = b.book; // @hack: unsure why array map puts object under parent of itself
 
         const handleBookClick = (book) => {
-
             onBookSelect(book.key);
             setBookName(book.name);
             onChapterSelect(1);

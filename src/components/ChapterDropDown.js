@@ -6,7 +6,7 @@ const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter, on
         return;
     }
 
-    const chapterNumbers = Object.keys(bible[selectedBook]).map(num => parseInt(num, 10).toString());
+    const chapterNumbers = Object.keys(bible[selectedBook]);
     
     const handleChange = (event) => {
         onChapterSelect(event.target.value);

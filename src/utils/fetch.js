@@ -1,4 +1,3 @@
-import { padDigits, removeLeadingZeros } from '../utils/format.js';
 import { books } from '../constants/books.js';
 
 /**
@@ -13,15 +12,11 @@ export const fetchVerse = (ids, bible) => {
     if (!bookId || !chapterId || !verseId) {
         return false;
     }
-  
-    bookId    = padDigits(bookId, 2);
-    chapterId = padDigits(chapterId);
-    verseId   = padDigits(verseId);
 
     return {
         book:     books.find((b) => bookId === b.key)?.name,
-        chapter:  removeLeadingZeros(chapterId),
-        verse:    removeLeadingZeros(verseId),
+        chapter:  chapterId,
+        verse:    verseId,
         text:     bible?.[bookId]?.[chapterId]?.[verseId] ?? undefined
     };
 };
@@ -29,10 +24,6 @@ export const fetchVerse = (ids, bible) => {
 export const fetchChapter = (ids, bible) => {
 
     let [bookId, chapterId] = ids;
-  
-    bookId    = padDigits(bookId, 2);
-    chapterId = padDigits(chapterId);
-
     return bible?.[bookId]?.[chapterId] ?? undefined;
 };
 
