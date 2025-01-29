@@ -14,7 +14,8 @@ There is not order to these todos
 - [ ] Session Var, remember where user left off.
    - [ ] Show Random verse by default, if no session found.
 - [ ] select alt translation (just add a NLT etc, just to test and adapt for it)
-- [ ] When clicking Book or Chapter in result, take to top of that result list.
+- [ ] /x-x-x paths, so can hyperlink results
+  - [ ] When clicking Book or Chapter in result, take to top of that result list.
 
 ## ideas
 

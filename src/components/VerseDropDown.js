@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchChapter } from '../utils/fetch.js';
+import { fetchVersesFromChapter } from '../utils/fetch.js';
 
 const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, onVerseSelect }) => {
 
@@ -7,7 +7,7 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
         return;
     }
 
-    const verses = fetchChapter([selectedBook, selectedChapter], bible);
+    const verses = fetchVersesFromChapter([selectedBook, selectedChapter], bible);
 
     const handleChange = (event) => {
         onVerseSelect(event.target.value);

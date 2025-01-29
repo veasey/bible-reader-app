@@ -40,20 +40,21 @@ const findVersesByQuery = (query, bible) => {
   return results;
 }
 
-const findVerse = (query, bible, onBookSelect, onChapterSelect, onVerseSelect) => {
+const findVerse = (query, bible, regex, indexState) => {
 
-  const regex = /^(\d*\s?[a-zA-Z]+)\s(\d+):(\d+)$/i;
   const match = query.toLowerCase().trim().match(regex);
   
   if (match) {
     const { key: bookId } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
-    const ids = [bookId, match[2], match[3]];
+    const ids = [bookId, match[2], match[3] ?? 1];
     const verse = fetchVerse(ids, bible);
+    
     if (verse) {
-
+    
+      const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
       onBookSelect(bookId);
-      onChapterSelect(match[2]);
-      onVerseSelect(match[3]);
+      onChapterSelect( match[2]);
+      onVerseSelect(match[3] ?? 1);
 
       return [verse];
     }
@@ -62,31 +63,36 @@ const findVerse = (query, bible, onBookSelect, onChapterSelect, onVerseSelect) =
   return [];
 }
 
+const findFirstVerseFromBook = (bible, key, indexState) => {
+
+  const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
+
+  onBookSelect(key);
+  onChapterSelect(1);
+  onVerseSelect(1);
+
+  return [fetchVerse([key, 1, 1], bible)];
+}
+
 export const handleSearch = (query, bible, indexState) => {
 
-    const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
 
     if (!query.trim() || !bible) return;
 
-    //const bookPattern = books.join("|")
     const normalizedQuery = query.toLowerCase();
     let results = [];
 
-    // Option 3: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
-    const regexVerse = /^\d*\s?[a-zA-Z]+\s+\d+:\d+$/i;
-    if (regexVerse.test(normalizedQuery)) {
-      results = [...results, ...findVerse(normalizedQuery, bible, onBookSelect, onChapterSelect, onVerseSelect)];
+    // Option 1: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
+    const regexChapterOrVerse = /^(\d*\s?[a-zA-Z]+)\s+(\d+)(?::(\d+))?$/i;
+    if (regexChapterOrVerse.test(normalizedQuery)) {
+      results = [...results, ...findVerse(normalizedQuery, bible, regexChapterOrVerse, indexState)];
     }
-    
-    // Option 2: Check for "book chapter" (e.g., "1 john 3" or "john 3")
-    // if (new RegExp(`^[1-3]?\\s*(${bookPattern})\\s+\\d+$`).test(normalizedQuery)) {
-    //   results = [...results, ...fetchChapter(normalizedQuery, bible, books)];
-    // }
 
-    // Option 1: Book name only (e.g., "1 John" or "John")
-    // if (new RegExp(`^[1-3]?\\s*(${bookPattern})$`).test(normalizedQuery)) {
-    //   results = [...results, ...fetchBook(normalizedQuery, bible, books)];
-    // }
-        
+    // Option 2: Book name only (e.g., "1 John" or "John")
+    const book = books.find(b => b.name.toLowerCase() === normalizedQuery)?.key;
+    if (book) {
+      results = [...results, ...findFirstVerseFromBook(bible, book, indexState)];
+    }
+      
     return [...results, ...findVersesByQuery(normalizedQuery, bible)];
 };

@@ -15,12 +15,8 @@ export const fetchVerse = (ids, bible) => {
     };
 };
 
-export const fetchChapter = (ids, bible) => {
+export const fetchVersesFromChapter = (ids, bible) => {
 
     let [bookId, chapterId] = ids;
     return bible?.[bookId]?.[chapterId] ?? undefined;
-};
-
-export const fetchBook = (ids, bible) => {
-    return undefined;
 };
