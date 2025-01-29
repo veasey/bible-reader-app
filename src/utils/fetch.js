@@ -1,11 +1,5 @@
 import { books } from '../constants/books.js';
 
-/**
- * @note.
- * Can bible / books be global to all methods here?
- * - shared logic between two written methods, findversesbyquery and find verse?
- * - perhaps skip get book, as this will be via menu???
- */
 export const fetchVerse = (ids, bible) => {
 
     let [bookId, chapterId, verseId] = ids;    
