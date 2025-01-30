@@ -74,18 +74,16 @@ const findFirstVerseFromBook = (bible, key, indexState) => {
   return [fetchVerse([key, 1, 1], bible)];
 }
 
-const getBibleScope = (bible, index) => {
+const getBibleScope = (bible, selectedBook) => {
 
-  const [bookId] = index;
-
-  if (bookId) {
-    return {[bookId]: bible[bookId]};
+  if (selectedBook) {
+    return {[selectedBook]: bible[selectedBook]};
   }
 
   return bible;
 }
 
-export const handleSearch = (query, bible, indexState, index) => {
+export const handleSearch = (query, bible, indexState, selectedBook) => {
 
     const normalizedQuery = query.toLowerCase().trim();
     let results = [];
@@ -104,6 +102,6 @@ export const handleSearch = (query, bible, indexState, index) => {
       results = [...results, ...findFirstVerseFromBook(bible, book, indexState)];
     }
 
-    bible = getBibleScope(bible, index);
-    return [...results, ...findVersesByQuery(normalizedQuery, bible)];
+    let filteredBible = getBibleScope(bible, selectedBook);
+    return [...results, ...findVersesByQuery(normalizedQuery, filteredBible)];
 };
