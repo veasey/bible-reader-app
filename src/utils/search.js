@@ -105,6 +105,5 @@ export const handleSearch = (query, bible, indexState, index) => {
     }
 
     bible = getBibleScope(bible, index);
-    console.log(bible);
     return [...results, ...findVersesByQuery(normalizedQuery, bible)];
 };
