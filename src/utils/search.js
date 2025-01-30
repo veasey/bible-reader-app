@@ -76,7 +76,7 @@ const findFirstVerseFromBook = (bible, key, indexState) => {
 
 const getBibleScope = (bible, index) => {
 
-  const [bookId, chapterId, verseId] = index;
+  const [bookId] = index;
 
   if (bookId) {
     return {[bookId]: bible[bookId]};

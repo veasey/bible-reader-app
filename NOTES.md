@@ -6,7 +6,7 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] have a clear selected book option
+- [x] have a clear selected book option
 - [ ] have a clear query button
 - [ ] have a research query option
 - [ ] Display entire chapter (as an option)
