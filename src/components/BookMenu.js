@@ -18,6 +18,11 @@ const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVe
         setIsOpen(!isOpen);
     };
 
+    const clearBookSelection = () => {
+        onBookSelect(0);
+        setBookName('');
+    };
+
     const ClickableBookName = (b) => {
 
         const [isClicked, setIsClicked] = useState(false);
@@ -57,12 +62,17 @@ const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVe
     return (
         <div>
             <div className='book-menu-container'>
-
-                {/* Burger Icon */}
                 <div>
+                    {/* Select Book Button */}
                     <button className="burger-icon" onClick={toggleMenu}>
-                        {isOpen ? "✕" : "☰"} {bookName ? bookName : 'Select Book'}
+                        {isOpen ? "✕" : "☰"} {bookName ? bookName : ' Select Book'}
                     </button>
+                    {/* Clear Button */}
+                    {bookName &&
+                    <button onClick={clearBookSelection}>
+                        ↩️ Clear
+                    </button>
+                    }
                 </div>
 
                 {/* Chapter Drop DOwn */}
