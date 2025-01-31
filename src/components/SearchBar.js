@@ -26,6 +26,10 @@ const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses}) =>
         }       
     }
 
+    const clearQuery = () => {
+        setQuery('');
+    }
+
     return (
         <>
             <input
@@ -35,6 +39,7 @@ const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses}) =>
                 onChange={onSearch}
                 style={{ marginRight: '10px' }}
             />
+            <button onClick={clearQuery}>↩️</button>
             {loading && <LoadingThrobber message="Searching for verses..." />}
             {query && query.length > 0 && verses?.length === 0 && (
                 <div><p>No results found</p></div>
