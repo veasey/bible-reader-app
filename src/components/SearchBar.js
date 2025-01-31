@@ -17,13 +17,18 @@ const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses}) =>
         [bible, selectedBook] 
     );
 
-    const onSearch = (event) => {
+    const onSearchType = (event) => {
         setLoading(true);
         const value = event.target.value;
         setQuery(value);
         if (query.length >= 3) {
             debouncedSearch(value); 
         }       
+    }
+
+    const onSearchClick = () => {
+        setLoading(true);
+        debouncedSearch(query);
     }
 
     const clearQuery = () => {
@@ -36,10 +41,11 @@ const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses}) =>
                 type="text"
                 placeholder="Search for a verse or phrase..."
                 value={query}
-                onChange={onSearch}
+                onChange={onSearchType}
                 style={{ marginRight: '10px' }}
             />
             <button onClick={clearQuery}>↩️</button>
+            <button onClick={onSearchClick}>🔍 Search</button>
             {loading && <LoadingThrobber message="Searching for verses..." />}
             {query && query.length > 0 && verses?.length === 0 && (
                 <div><p>No results found</p></div>
