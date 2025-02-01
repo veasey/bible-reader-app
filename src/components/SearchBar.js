@@ -3,9 +3,8 @@ import { handleSearch } from '../utils/search';
 import debounce from 'lodash/debounce';
 import LoadingThrobber from './LoadingThrobber';
 
-const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses}) => {
+const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses, query, setQuery}) => {
 
-    const [query, setQuery] = useState('');
     const [loading, setLoading] = useState(false);
 
     const debouncedSearch = useCallback(

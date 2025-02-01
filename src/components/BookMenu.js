@@ -3,8 +3,9 @@ import './BookMenu.css';
 import { books } from '../constants/books.js';
 import ChapterDropDown from './ChapterDropDown';
 import VerseDropDown from './VerseDropDown';
+import { findVersesByQuery, getBibleScope } from '../utils/search.js';
 
-const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVerse }) => {
+const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVerse, query, setVerses}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const [bookName, setBookName] = useState('');
@@ -29,12 +30,30 @@ const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVe
         const book = b.book; // @hack: unsure why array map puts object under parent of itself
 
         const handleBookClick = (book) => {
+
             onBookSelect(book.key);
             setBookName(book.name);
-            onChapterSelect(1);
-            onVerseSelect(1);
             setIsClicked(!isClicked);
             setIsOpen(false);
+
+            let normalizedQuery = query.toLowerCase().trim();
+
+            if (normalizedQuery.length === 0) {
+
+                // if no query, get first verse
+                onChapterSelect(1);
+                onVerseSelect(1);
+            } else {
+
+                console.log(normalizedQuery);
+
+                // otherwise search for query within current book
+                let filteredBible = getBibleScope(bible, book.key);
+                let verses = findVersesByQuery(normalizedQuery, filteredBible);
+                setVerses(verses);
+                onChapterSelect(0);
+                onVerseSelect(0);
+            }         
         }
 
         return (

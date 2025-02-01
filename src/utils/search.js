@@ -1,7 +1,7 @@
 import { books } from '../constants/books.js';
 import { fetchVerse } from '../utils/fetch.js';
 
-const findVersesByQuery = (query, bible) => {
+export const findVersesByQuery = (query, bible) => {
   
   const bookIds = Object.keys(bible);
   let results = [];
@@ -74,7 +74,7 @@ const findFirstVerseFromBook = (bible, key, indexState) => {
   return [fetchVerse([key, 1, 1], bible)];
 }
 
-const getBibleScope = (bible, selectedBook) => {
+export const getBibleScope = (bible, selectedBook) => {
 
   if (selectedBook) {
     return {[selectedBook]: bible[selectedBook]};

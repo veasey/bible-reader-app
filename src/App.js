@@ -17,6 +17,9 @@ const BibleApp = () => {
   const [selectedChapter, setSelectedChapter] = useState(0);
   const [selectedVerse, setSelectedVerse] = useState(0);
 
+  // query
+  const [query, setQuery] = useState('');
+
   // results from searches, or specified coors
   const [verses, setVerses] = useState([]);
   
@@ -46,6 +49,8 @@ const BibleApp = () => {
         selectedBook={selectedBook}
         selectedChapter={selectedChapter}
         selectedVerse={selectedVerse}
+        query={query}
+        setVerses={setVerses}
       />
       <h1>King James Bible</h1>
       <SearchBar 
@@ -54,6 +59,8 @@ const BibleApp = () => {
         selectedBook={selectedBook}
         onSearchResult={setVerses} 
         verses={verses} 
+        query={query}
+        setQuery={setQuery}
       />
       <Verses verses={verses} />
       <Footer />
