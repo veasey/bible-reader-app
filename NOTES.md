@@ -6,12 +6,9 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [x] have a clear selected book option
-- [x] have a clear query button
-- [x] have a research query option
-  - [x] if changing book with a query in, search that book for the query.
-  - [x] if query empty, get 1st verse
-- [ ] Display entire chapter (as an option)
+- [ ] 🐛 Bug: Sometimes When searching and switching chapters / book it shows no results.
+- [ ] 🐛 Bug: Search searches when nothing is entered.
+
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
 - [ ] Pagination
