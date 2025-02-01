@@ -10,7 +10,7 @@ const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter, on
     
     const handleChange = (event) => {
         onChapterSelect(event.target.value);
-        onVerseSelect(1);
+        onVerseSelect(0);
     };
 
     return (

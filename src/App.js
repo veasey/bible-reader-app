@@ -3,7 +3,7 @@ import SearchBar from './components/SearchBar';
 import BookMenu from './components/BookMenu';
 import Verses from './components/Verses';
 import Footer from './components/Footer';
-import { fetchVerse } from './utils/fetch.js';
+import { fetchVerses } from './utils/fetch.js';
 import './App.css';
 
 const BibleApp = () => {
@@ -33,9 +33,9 @@ const BibleApp = () => {
   }, [currentTranslation]);  
 
   useEffect(() => {
-    let verse = fetchVerse([selectedBook, selectedChapter, selectedVerse], bible);
+    let verse = fetchVerses([selectedBook, selectedChapter, selectedVerse], bible);
     if (verse) {
-      setVerses([verse]);
+      setVerses(verse);
     }
   }, [selectedBook, selectedChapter, selectedVerse, bible]);
 

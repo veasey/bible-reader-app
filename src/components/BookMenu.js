@@ -40,9 +40,9 @@ const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVe
 
             if (normalizedQuery.length === 0) {
 
-                // if no query, get first verse
+                // if no query, get entire first chapter
                 onChapterSelect(1);
-                onVerseSelect(1);
+                onVerseSelect(0);
             } else {
 
                 console.log(normalizedQuery);

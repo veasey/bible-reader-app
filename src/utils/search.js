@@ -1,5 +1,5 @@
 import { books } from '../constants/books.js';
-import { fetchVerse } from '../utils/fetch.js';
+import { fetchVerses } from '../utils/fetch.js';
 
 export const findVersesByQuery = (query, bible) => {
   
@@ -19,12 +19,13 @@ export const findVersesByQuery = (query, bible) => {
       for (const verseId of verseIds) {
 
         const ids = [bookId, chapterId, verseId];
-        const verse = fetchVerse(ids, bible);
+        const verse = fetchVerses(ids, bible);
 
         if (verse) {
 
           let verseText = verse.text;
-          if (verseText.toLowerCase().includes(query.toLowerCase())) {
+
+          if (verseText && verseText.toLowerCase().includes(query.toLowerCase())) {
             results.push({
               book:     books.find((b) => bookId === b.key)?.name,
               chapter:  chapterId,
@@ -47,7 +48,7 @@ const findVerse = (query, bible, regex, indexState) => {
   if (match) {
     const { key: bookId } = books.find(b => b.name.toLowerCase() === match[1].toLowerCase()) || {};
     const ids = [bookId, match[2], match[3] ?? 1];
-    const verse = fetchVerse(ids, bible);
+    const verse = fetchVerses(ids, bible);
     
     if (verse) {
     
@@ -71,7 +72,7 @@ const findFirstVerseFromBook = (bible, key, indexState) => {
   onChapterSelect(1);
   onVerseSelect(1);
 
-  return [fetchVerse([key, 1, 1], bible)];
+  return [fetchVerses([key, 1, 1], bible)];
 }
 
 export const getBibleScope = (bible, selectedBook) => {
