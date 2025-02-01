@@ -3,7 +3,7 @@ import { fetchVersesFromChapter } from '../utils/fetch.js';
 
 const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, onVerseSelect }) => {
 
-    if (!selectedBook || !selectedChapter) {
+    if (!selectedBook) {
         return;
     }
 
