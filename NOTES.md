@@ -9,12 +9,14 @@ There is not order to these todos
 - [x] have a clear selected book option
 - [x] have a clear query button
 - [x] have a research query option
-  - [ ] if changing book with a query in, search that book for the query.
-  - [ ] if query empty, get 1st verse
+  - [x] if changing book with a query in, search that book for the query.
+  - [x] if query empty, get 1st verse
 - [ ] Display entire chapter (as an option)
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
-- [ ] Show Next and Prev buttons
+- [ ] Pagination
+  - [ ] Show Next and Prev buttons
+  - [ ] verse result pagination
 - [ ] Show a Random Verse button
 - [ ] Session Var, remember where user left off.
    - [ ] Show Random verse by default, if no session found.
