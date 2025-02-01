@@ -2,43 +2,38 @@ import { books } from '../constants/books.js';
 import { fetchVerses } from '../utils/fetch.js';
 
 export const findVersesByQuery = (query, bible) => {
-  
-  const bookIds = Object.keys(bible);
-  let results = [];
 
-  if (!query) {
-    return results;
-  }
+	const bookIds = Object.keys(bible);
+	let results = [];
 
-  for (const bookId of bookIds) {
+	if (!query) {
+		console.log('no query');
+		return results;
+	}
 
-    const chapterIds = Object.keys(bible[bookId]);
-    for (const chapterId of chapterIds) {
+	for (const bookId of bookIds) {
 
-      const verseIds = Object.keys(bible[bookId][chapterId])
-      for (const verseId of verseIds) {
+		const chapterIds = Object.keys(bible[bookId]);
+		for (const chapterId of chapterIds) {
 
-        const ids = [bookId, chapterId, verseId];
-        const verse = fetchVerses(ids, bible);
+			const verseIds = Object.keys(bible[bookId][chapterId])
+			for (const verseId of verseIds) {
 
-        if (verse) {
+				let verse = bible[bookId][chapterId][verseId];
 
-          let verseText = verse.text;
-
-          if (verseText && verseText.toLowerCase().includes(query.toLowerCase())) {
-            results.push({
-              book:     books.find((b) => bookId === b.key)?.name,
-              chapter:  chapterId,
-              verse:    verseId,
-              text:     verseText
-            });
-          }
-        }
-      }
-    }
-  }
-
-  return results;
+				if (verse.toLowerCase().includes(query.toLowerCase())) {
+					results.push({
+						book:     books.find((b) => bookId === b.key)?.name,
+						chapter:  chapterId,
+						verse:    verseId,
+						text:     verse
+					});
+				}
+			}
+		}
+	}
+	
+	return results;
 }
 
 const findVerse = (query, bible, regex, indexState) => {
