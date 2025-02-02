@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { handleSearch } from '../utils/search';
+import { handleSearch } from '../../../utils/search';
 import debounce from 'lodash/debounce';
 import LoadingThrobber from './LoadingThrobber';
 

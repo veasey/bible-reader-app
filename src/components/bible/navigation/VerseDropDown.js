@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchVersesFromChapter } from '../utils/fetch.js';
+import { fetchVersesFromChapter } from '../../../utils/fetch.js';
 
 const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, onVerseSelect }) => {
 

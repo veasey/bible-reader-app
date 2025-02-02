@@ -3,3 +3,22 @@ body {
   background-color: #61dafb;
   padding: 20px;
 }
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust the space between the menu items */
+  font-size: 18px;
+}
+
+.main-menu span {
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-menu span:hover {
+  background-color: #f0f0f0; /* Light hover background */
+  color: #007bff; /* Hover text color */
+}

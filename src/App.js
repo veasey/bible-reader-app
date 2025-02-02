@@ -1,71 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import SearchBar from './components/SearchBar';
-import BookMenu from './components/BookMenu';
-import Verses from './components/Verses';
+import React, { useState } from 'react';
+import BibleApp from './components/bible/BibleApp';
+import About from './components/pages/About';
 import Footer from './components/Footer';
-import { fetchVerses } from './utils/fetch.js';
 import './App.css';
 
-const BibleApp = () => {
+const App = () => {
 
-  // bible data
-  const [bible, setBible] = useState({});
-  const [currentTranslation, setCurrentTranslation] = useState('kjv');
-
-  // coords for specific verses
-  const [selectedBook, setSelectedBook] = useState(0);
-  const [selectedChapter, setSelectedChapter] = useState(0);
-  const [selectedVerse, setSelectedVerse] = useState(0);
-
-  // query
-  const [query, setQuery] = useState('');
-
-  // results from searches, or specified coors
-  const [verses, setVerses] = useState([]);
-  
-  useEffect(() => {
-    fetch('/bibles/' + currentTranslation + '.json')
-      .then((response) => response.json())
-      .then((data) => {
-        setBible(data);
-      })
-      .catch((error) => console.error('Error loading Bible:', error));
-  }, [currentTranslation]);  
-
-  useEffect(() => {
-    let verse = fetchVerses([selectedBook, selectedChapter, selectedVerse], bible);
-    if (verse) {
-      setVerses(verse);
-    }
-  }, [selectedBook, selectedChapter, selectedVerse, bible]);
-
-  const indexState = [setSelectedBook, setSelectedChapter, setSelectedVerse];
+  const [showPage, setShowPage] = useState('BibleApp');
 
   return (
     <div>
-      <BookMenu 
-        bible={bible}
-        indexState={indexState}
-        selectedBook={selectedBook}
-        selectedChapter={selectedChapter}
-        selectedVerse={selectedVerse}
-        query={query}
-        setVerses={setVerses}
-      />
-      <h1>King James Bible</h1>
-      <SearchBar 
-        bible={bible} 
-        indexState={indexState}
-        selectedBook={selectedBook}
-        onSearchResult={setVerses} 
-        verses={verses} 
-        query={query}
-        setQuery={setQuery}
-      />
-      <Verses verses={verses} />
+      {/* Title */}
+      <h1>Bible Reader</h1>
+
+      {/* Navigation */}
+      <div class="main-menu">
+        <span onClick={() => setShowPage('BibleApp')}>Read</span> - 
+        <span onClick={() => setShowPage('About')}>About</span>
+      </div>
+
+      {showPage === 'BibleApp' && <BibleApp />}
+      {showPage === 'About' && <About />}
       <Footer />
     </div>
   );
 };
 
-export default BibleApp;
+export default App;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './BookMenu.css';
-import { books } from '../constants/books.js';
-import ChapterDropDown from './ChapterDropDown';
-import VerseDropDown from './VerseDropDown';
-import { findVersesByQuery, getBibleScope } from '../utils/search.js';
+import { books } from '../../../constants/books.js';
+import ChapterDropDown from './ChapterDropDown.js';
+import VerseDropDown from './VerseDropDown.js';
+import { findVersesByQuery, getBibleScope } from '../../../utils/search.js';
 
 const BookMenu = ({ bible, indexState, selectedBook, selectedChapter, selectedVerse, query, setVerses}) => {
 
