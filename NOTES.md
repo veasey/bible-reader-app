@@ -21,6 +21,8 @@ There is not order to these todos
 - [ ] /x-x-x paths, so can hyperlink results
   - [ ] When clicking Book or Chapter in result, take to top of that result list.
 
+- [ ] Search Toggle. Instead of phrases, AI Prompt to ask for relevant verses.
+
 ## ideas
 
 2. On the Menus, when you click on a chapter on the menu, you should display all verses of the selected chapter
