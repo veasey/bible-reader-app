@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="app">
       {/* Title */}
-      <h1>Bible Reader</h1>
+      <h1>The Good Book App</h1>
 
       {/* Navigation */}
       <div className="main-menu">
