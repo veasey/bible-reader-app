@@ -7,12 +7,17 @@ If there is a better place to keep these, let me know.
 There is not order to these todos
 
 - [ ] Styling
+   - [ ] have One Main Menu, with another "bar" for bible navigation beneath
+   - [ ] Have dropdown menu (with transition undernearth)
+   - [ ] have results underneath all that.
 - [ ] About / Contact Page (link to this github repo)
       - [x] Add About Page
       - [ ] write content
 - [ ] Pagination
   - [ ] Show Next and Prev buttons
-  - [ ] verse result pagination
+    - [ ] Do not show if at beginning or end
+    - [ ] verse result pagination
+  - [ ] Styling: have these centered in the right and left of content
 - [ ] Show a Random Verse button
 - [ ] Session Var, remember where user left off.
    - [ ] Show Random verse by default, if no session found.
