@@ -15,21 +15,21 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
 
     return (
         <div>
-            <label htmlFor="verseDropdown">Select a Verse:</label>
-            <select id="verseDropdown" value={selectedVerse} onChange={handleChange}>
-                {Object.keys(verses).length === 0 ? (
-                    <option disabled>No verses available</option>
-                ) : (
-                    <>
+            {!verses || Object.keys(verses).length === 0 ? (
+                <p>no verses available</p>
+            ) : (
+                <>
+                    <label htmlFor="verseDropdown">Select a Verse:</label>
+                    <select id="verseDropdown" value={selectedVerse} onChange={handleChange}>
                         <option key="0" value="0">All Verses</option>
                         {Object.entries(verses).map(([key, verse]) => (
                             <option key={key} value={key}>
                                 Verse {key}
                             </option>
-                        ))}
-                    </>
-                )}
-            </select>
+                        ))}    
+                    </select>
+                </>
+            )}
         </div>
     );    
 }

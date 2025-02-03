@@ -6,7 +6,6 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] 🐛 Bug: Sometimes When searching and switching chapters / book it shows no results.
 - [ ] 🐛 Bug: Search searches when nothing is entered.
 
 - [ ] Styling
