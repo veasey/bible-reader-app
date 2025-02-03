@@ -14,7 +14,7 @@ const App = () => {
       <h1>Bible Reader</h1>
 
       {/* Navigation */}
-      <div class="main-menu">
+      <div className="main-menu">
         <span onClick={() => setShowPage('BibleApp')}>Read</span> - 
         <span onClick={() => setShowPage('About')}>About</span>
       </div>
