@@ -9,7 +9,7 @@ const App = () => {
   const [showPage, setShowPage] = useState('BibleApp');
 
   return (
-    <div>
+    <div className="app">
       {/* Title */}
       <h1>Bible Reader</h1>
 
