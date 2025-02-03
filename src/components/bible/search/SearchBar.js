@@ -17,10 +17,10 @@ const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses, que
     );
 
     const onSearchType = (event) => {
-        setLoading(true);
         const value = event.target.value;
         setQuery(value);
-        if (query.length >= 3) {
+        if (value.length >= 3) {
+            setLoading(true);
             debouncedSearch(value); 
         }       
     }

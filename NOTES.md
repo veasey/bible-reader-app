@@ -6,8 +6,6 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] 🐛 Bug: Search searches when nothing is entered.
-
 - [ ] Styling
 - [ ] About / Contact Page (link to this github repo)
       - [x] Add About Page
