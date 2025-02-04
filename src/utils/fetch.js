@@ -23,7 +23,7 @@ export const fetchVerses = (ids, bible) => {
         }
 
         // return formatted verses in chapter
-        return Object.keys(chapterVerses).map(([verseId,]) => (fetchVerse(bible, bookName, bookId, chapterId, verseId)));
+        return Object.keys(chapterVerses).map((verseId) => (fetchVerse(bible, bookName, bookId, chapterId, verseId)));
     }
 
     // single verse
