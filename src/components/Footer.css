@@ -2,4 +2,11 @@
     font-size: 0.85em;
     padding: 1em;
     margin-top: auto;
+
+    background-color: black;
+    color: #61dafb;
+}
+
+.footer .quote {
+    color: antiquewhite;
 }

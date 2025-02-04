@@ -3,7 +3,7 @@ import SearchBar from './search/SearchBar';
 import BookMenu from './navigation/BookMenu';
 import Verses from '../../components/bible/Verses';
 import { fetchVerses } from '../../utils/fetch.js';
-import '../../App.css';
+import './BibleApp.css';
 
 const BibleApp = () => {
 
@@ -39,24 +39,26 @@ const BibleApp = () => {
 
   return (
     <div>
-        <BookMenu 
-          bible={bible}
-          indexState={indexState}
-          selectedBook={selectedBook}
-          selectedChapter={selectedChapter}
-          selectedVerse={selectedVerse}
-          query={query}
-          setVerses={setVerses}
-        />
-        <SearchBar 
-          bible={bible} 
-          indexState={indexState}
-          selectedBook={selectedBook}
-          onSearchResult={setVerses} 
-          verses={verses} 
-          query={query}
-          setQuery={setQuery}
-        />
+        <div className="bible-navigation">
+          <BookMenu 
+            bible={bible}
+            indexState={indexState}
+            selectedBook={selectedBook}
+            selectedChapter={selectedChapter}
+            selectedVerse={selectedVerse}
+            query={query}
+            setVerses={setVerses}
+          />
+          <SearchBar 
+            bible={bible} 
+            indexState={indexState}
+            selectedBook={selectedBook}
+            onSearchResult={setVerses} 
+            verses={verses} 
+            query={query}
+            setQuery={setQuery}
+          />
+        </div>
         <Verses verses={verses} />
     </div>
   );

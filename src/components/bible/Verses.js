@@ -1,16 +1,18 @@
+import './Verses.css';
+
 /**
  * Show results
  */
 const Verses = ({verses}) => {
 
-    if (!verses || !Array.isArray(verses)) {
-        return null; // Ensure the component gracefully handles invalid input
+    if (!verses || !Array.isArray(verses) || !verses.length) {
+        return;
     }
 
     return (
-        <div>
+        <div className = 'verse-results'>
             {verses.map((result, index) => (
-            <p key={index}>
+            <p key={index} className=''>
                 <strong>{result.book} {result.chapter}:{result.verse}</strong> - {result.text}
             </p>
             ))}
