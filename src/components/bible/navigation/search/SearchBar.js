@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react';
-import { handleSearch } from '../../../utils/search';
+import { handleSearch } from 'utils/search';
 import debounce from 'lodash/debounce';
 import LoadingThrobber from './LoadingThrobber';
 
-const SearchBar = ({bible, indexState, selectedBook, onSearchResult, verses, query, setQuery}) => {
+const SearchBar = ({bible, setSelectedBook, setSelectedChapter, setSelectedVerse, selectedBook, onSearchResult, verses, query, setQuery}) => {
 
     const [loading, setLoading] = useState(false);
+    const indexState = [setSelectedBook, setSelectedChapter, setSelectedVerse];
 
     const debouncedSearch = useCallback(
         debounce((searchQuery) => {

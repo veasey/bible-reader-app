@@ -1,11 +1,15 @@
 import React from 'react';
-import { fetchVersesFromChapter } from '../../../utils/fetch.js';
+import { fetchVersesFromChapter } from 'utils/fetch.js';
 
-const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, onVerseSelect }) => {
+const VerseDropDown = ({
+    bible,
+    selectedBook,
+    selectedChapter,
+    selectedVerse,
+    onVerseSelect
+}) => {
 
-    if (!selectedBook) {
-        return;
-    }
+    if (!selectedBook) return;
 
     const verses = fetchVersesFromChapter(selectedBook, selectedChapter, bible);
 
@@ -19,7 +23,7 @@ const VerseDropDown = ({ bible, selectedBook, selectedChapter, selectedVerse, on
                 <p>no verses available</p>
             ) : (
                 <>
-                    <label htmlFor="verseDropdown">Select a Verse:</label>
+                    <label htmlFor="verseDropdown">Verse:</label>
                     <select id="verseDropdown" value={selectedVerse} onChange={handleChange}>
                         <option key="0" value="0">All Verses</option>
                         {Object.entries(verses).map(([key, verse]) => (

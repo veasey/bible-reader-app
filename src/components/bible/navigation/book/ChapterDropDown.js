@@ -1,10 +1,14 @@
 import React  from 'react';
 
-const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter, onVerseSelect }) => {
+const ChapterMenu = ({
+    bible,
+    selectedBook,
+    onChapterSelect,
+    selectedChapter,
+    onVerseSelect
+}) => {
     
-    if (!selectedBook) {
-        return;
-    }
+    if (!selectedBook) return;
 
     const chapterNumbers = Object.keys(bible[selectedBook]);
     
@@ -15,7 +19,7 @@ const ChapterMenu = ({ bible, selectedBook, onChapterSelect, selectedChapter, on
 
     return (
         <div>
-            <label htmlFor="chapterDropdown">Select a Chapter:</label>
+            <label htmlFor="chapterDropdown">Chapter:</label>
                 <select
                     id="chapterDropdown"
                     value={selectedChapter}

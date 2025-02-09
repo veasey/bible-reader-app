@@ -7,9 +7,11 @@ If there is a better place to keep these, let me know.
 There is not order to these todos
 
 - [ ] Styling
-   - [ ] have One Main Menu, with another "bar" for bible navigation beneath
-   - [ ] Have dropdown menu (with transition undernearth)
-   - [ ] have results underneath all that.
+   - [x] have One Main Menu, with another "bar" for bible navigation beneath
+   - [ ] Add dropdown animation . transition
+   - [x] have results underneath all that.
+   - [ ] mobile styling
+   - [ ] further colour and style
 - [ ] About / Contact Page (link to this github repo)
       - [x] Add About Page
       - [ ] write content
