@@ -79,6 +79,8 @@ const Menu = ({ bible, setVerses, verses}) => {
                         onVerseSelect={setSelectedVerse}
                     />
 
+                    <div className="menu-item">&nbsp;</div>
+
                     <SearchBar 
                         bible={bible} 
                         setSelectedBook={selectedBook}

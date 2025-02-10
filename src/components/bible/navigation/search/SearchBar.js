@@ -34,16 +34,22 @@ const SearchBar = ({bible, setSelectedBook, setSelectedChapter, setSelectedVerse
     }
 
     return (
-        <div className="menu-item">
-            <input
-                type="text"
-                placeholder="Search for a verse or phrase..."
-                value={query}
-                onChange={onSearchType}
-            />
-            <button onClick={clearQuery}>↩️</button>
-            <button onClick={onSearchClick}>🔍 Search</button>
-        </div>
+        <>
+            <div className="menu-item">
+                <input
+                    type="text"
+                    placeholder="Search for a verse or phrase..."
+                    value={query}
+                    onChange={onSearchType}
+                />
+            </div>
+            <div className="menu-item">
+                <button onClick={clearQuery}>↩️</button>
+            </div>
+            <div className="menu-item">
+                <button onClick={onSearchClick}>🔍 Search</button>
+            </div>
+        </>
     );
 }
 
