@@ -1,6 +1,7 @@
 .container {
     flex: 1;
     margin-bottom: 16;
+    padding: 20px;
 }
 .icon {
     font-size: 40px;

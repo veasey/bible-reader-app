@@ -107,7 +107,9 @@ const Menu = ({ bible, setVerses, verses}) => {
             {/* Feedback */}
             {loading && <LoadingThrobber message="Searching for verses..." />}
             {query && query.length > 0 && verses?.length === 0 && (
-                <div><p>No results found</p></div>
+                <div style={{padding: '20px'}}>
+                    <p>No results found</p>
+                </div>
             )}
         </>
     );

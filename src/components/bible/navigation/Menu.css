@@ -40,3 +40,8 @@
     font-weight: bold;
     background-color: aquamarine;
 }
+
+.feedback-container {
+    padding: 20px;
+    background-color: bisque;
+}
