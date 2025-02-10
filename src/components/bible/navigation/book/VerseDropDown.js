@@ -17,23 +17,18 @@ const VerseDropDown = ({
         onVerseSelect(Number(event.target.value));
     };
 
+    if (!verses || Object.keys(verses).length === 0) return;
+
     return (
-        <div>
-            {!verses || Object.keys(verses).length === 0 ? (
-                <p>no verses available</p>
-            ) : (
-                <>
-                    <label htmlFor="verseDropdown">Verse:</label>
-                    <select id="verseDropdown" value={selectedVerse} onChange={handleChange}>
-                        <option key="0" value="0">All Verses</option>
-                        {Object.entries(verses).map(([key, verse]) => (
-                            <option key={key} value={key}>
-                                Verse {key}
-                            </option>
-                        ))}    
-                    </select>
-                </>
-            )}
+        <div className="menu-item">
+            <select id="verseDropdown" value={selectedVerse} onChange={handleChange}>
+                <option key="0" value="0">All Verses</option>
+                {Object.entries(verses).map(([key, verse]) => (
+                    <option key={key} value={key}>
+                        Verse {key}
+                    </option>
+                ))}    
+            </select>
         </div>
     );    
 }

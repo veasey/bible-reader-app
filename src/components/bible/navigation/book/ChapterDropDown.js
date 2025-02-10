@@ -18,8 +18,7 @@ const ChapterMenu = ({
     };
 
     return (
-        <div>
-            <label htmlFor="chapterDropdown">Chapter:</label>
+        <div className="menu-item">
                 <select
                     id="chapterDropdown"
                     value={selectedChapter}

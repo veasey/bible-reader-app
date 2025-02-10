@@ -1,11 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { handleSearch } from 'utils/search';
 import debounce from 'lodash/debounce';
-import LoadingThrobber from './LoadingThrobber';
 
-const SearchBar = ({bible, setSelectedBook, setSelectedChapter, setSelectedVerse, selectedBook, onSearchResult, verses, query, setQuery}) => {
+const SearchBar = ({bible, setSelectedBook, setSelectedChapter, setSelectedVerse, selectedBook, onSearchResult, verses, query, setQuery, setLoading}) => {
 
-    const [loading, setLoading] = useState(false);
     const indexState = [setSelectedBook, setSelectedChapter, setSelectedVerse];
 
     const debouncedSearch = useCallback(
@@ -36,21 +34,16 @@ const SearchBar = ({bible, setSelectedBook, setSelectedChapter, setSelectedVerse
     }
 
     return (
-        <>
+        <div className="menu-item">
             <input
                 type="text"
                 placeholder="Search for a verse or phrase..."
                 value={query}
                 onChange={onSearchType}
-                style={{ marginRight: '10px' }}
             />
             <button onClick={clearQuery}>↩️</button>
             <button onClick={onSearchClick}>🔍 Search</button>
-            {loading && <LoadingThrobber message="Searching for verses..." />}
-            {query && query.length > 0 && verses?.length === 0 && (
-                <div><p>No results found</p></div>
-            )}
-        </>
+        </div>
     );
 }
 

@@ -4,13 +4,20 @@
 }
 
 .menu-container { 
-    font-family: "Arial, sans-serif";
     display : flex;
-    align-items: flex-start;   
 }
 
-.menu-container div {
-    flex: 1;   
+/**
+ * Menu Items
+ */
+.menu-item button, .menu-item input, .menu-item select {
+    box-sizing: border-box;
+    height: 30px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .submenu-book-select-container {

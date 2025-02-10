@@ -7,7 +7,7 @@ const BookSelectButton = ({
     bookName
 }) => {
     return (
-        <div>
+        <div className="menu-item">
             {/* Select Book Button */}
             <button className="burger-icon" onClick={onToggleIsOpen}>
                 {isOpen ? "✕" : "☰"} {bookName ? bookName : ' Select Book'}
