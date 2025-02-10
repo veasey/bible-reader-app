@@ -6,12 +6,6 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] Styling
-   - [x] have One Main Menu, with another "bar" for bible navigation beneath
-   - [ ] Add dropdown animation . transition
-   - [x] have results underneath all that.
-   - [ ] mobile styling
-   - [ ] further colour and style
 - [ ] About / Contact Page (link to this github repo)
       - [x] Add About Page
       - [ ] write content
@@ -28,6 +22,13 @@ There is not order to these todos
   - [ ] When clicking Book or Chapter in result, take to top of that result list.
 
 - [ ] Search Toggle. Instead of phrases, AI Prompt to ask for relevant verses.
+
+- [ ] Styling
+   - [x] have One Main Menu, with another "bar" for bible navigation beneath
+   - [ ] Add dropdown animation . transition
+   - [x] have results underneath all that.
+   - [ ] mobile styling
+   - [x] further colour and style
 
 ## ideas
 
