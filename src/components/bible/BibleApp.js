@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Menu from 'components/bible/navigation/Menu';
 import Verses from 'components/bible/Verses';
+import LoadingThrobber from 'components/bible/navigation/search/LoadingThrobber';
 
 const BibleApp = () => {
 
@@ -9,6 +10,8 @@ const BibleApp = () => {
   const [currentTranslation, setCurrentTranslation] = useState('kjv');
 
   const [verses, setVerses] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [query, setQuery] = useState('');
   
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
@@ -21,8 +24,26 @@ const BibleApp = () => {
 
   return (
     <div>
-        <Menu bible={bible} setVerses={setVerses} verses={verses} />
-        <Verses verses={verses} />
+        <Menu 
+          bible={bible} 
+          setVerses={setVerses} 
+          verses={verses} 
+          setLoading={setLoading} 
+          setQuery={setQuery}
+          query={query}
+        />
+
+        {/* Feedback */}
+        {loading && <LoadingThrobber message="Searching for verses..." />}
+        {query && query.length > 0 && verses?.length === 0 && (
+            <div style={{padding: '20px'}}>
+                <p>No results found</p>
+            </div>
+        )}
+
+        {!loading && 
+          <Verses verses={verses} />
+        }
     </div>
   );
 };

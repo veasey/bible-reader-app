@@ -6,25 +6,20 @@ import BookSelectButton from './book/BookSelectButton';
 import ChapterDropDown from './book/ChapterDropDown';
 import VerseDropDown from './book/VerseDropDown';
 import SearchBar from './search/SearchBar';
-import LoadingThrobber from './search/LoadingThrobber';
 import { fetchVerses } from 'utils/fetch.js';
 
-const Menu = ({ bible, setVerses, verses}) => {
+const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
 
     // coords for specific verses
     const [selectedBook, setSelectedBook] = useState(0);
     const [selectedChapter, setSelectedChapter] = useState(0);
     const [selectedVerse, setSelectedVerse] = useState(0);
 
-    const [query, setQuery] = useState('');
-
     const [isBookSelectMenuOpen, setIsBookSelectMenuOpen] = useState(false);
     const [bookName, setBookName] = useState('');
 
     const oldTestamentBooks = books.slice(0,40);
     const newTestamentBooks = books.slice(40);
-
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         let verse = fetchVerses([selectedBook, selectedChapter, selectedVerse], bible);
@@ -106,13 +101,7 @@ const Menu = ({ bible, setVerses, verses}) => {
                 )}
             </div>
 
-            {/* Feedback */}
-            {loading && <LoadingThrobber message="Searching for verses..." />}
-            {query && query.length > 0 && verses?.length === 0 && (
-                <div style={{padding: '20px'}}>
-                    <p>No results found</p>
-                </div>
-            )}
+            
         </>
     );
 };
