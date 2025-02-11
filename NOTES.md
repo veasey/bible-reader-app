@@ -6,9 +6,6 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] About / Contact Page (link to this github repo)
-      - [x] Add About Page
-      - [ ] write content
 - [ ] Pagination
   - [ ] Show Next and Prev buttons
     - [ ] Do not show if at beginning or end
