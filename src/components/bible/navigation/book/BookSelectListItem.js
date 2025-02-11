@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-
 import { findVersesByQuery, getBibleScope } from 'utils/search.js';
+import { useVerseCoords } from 'context/VerseCoordsContext';
 
 const BookSelectListItem = ({
     bible, 
-    setSelectedBook, 
-    setSelectedChapter, 
-    setSelectedVerse, 
     setBookName, 
     setIsBookSelectMenuOpen, 
     setVerses, 
@@ -15,6 +12,7 @@ const BookSelectListItem = ({
 }) => {
 
     const [isClicked, setIsClicked] = useState(false);
+    const {setSelectedBook, setSelectedChapter, setSelectedVerse} = useVerseCoords();
 
     const handleBookClick = () => {
 

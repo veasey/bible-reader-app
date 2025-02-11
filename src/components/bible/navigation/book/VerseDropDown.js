@@ -1,20 +1,17 @@
 import React from 'react';
 import { fetchVersesFromChapter } from 'utils/fetch.js';
+import { useVerseCoords } from 'context/VerseCoordsContext';
 
-const VerseDropDown = ({
-    bible,
-    selectedBook,
-    selectedChapter,
-    selectedVerse,
-    onVerseSelect
-}) => {
+const VerseDropDown = ({bible}) => {
+
+    const {selectedBook, selectedChapter, selectedVerse, setSelectedVerse} = useVerseCoords();
 
     if (!selectedBook) return;
 
     const verses = fetchVersesFromChapter(selectedBook, selectedChapter, bible);
 
     const handleChange = (event) => {
-        onVerseSelect(Number(event.target.value));
+        setSelectedVerse(Number(event.target.value));
     };
 
     if (!verses || Object.keys(verses).length === 0) return;

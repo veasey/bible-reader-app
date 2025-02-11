@@ -36,7 +36,7 @@ export const findVersesByQuery = (query, bible) => {
 	return results;
 }
 
-const findVerse = (query, bible, regex, indexState) => {
+const findVerse = (query, bible, regex, setSelectedBook, setSelectedChapter, setSelectedVerse) => {
 
   const match = query.toLowerCase().trim().match(regex);
   
@@ -47,10 +47,9 @@ const findVerse = (query, bible, regex, indexState) => {
     
     if (verse) {
     
-      const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
-      onBookSelect(bookId);
-      onChapterSelect( match[2]);
-      onVerseSelect(match[3] ?? 1);
+      setSelectedBook(bookId);
+      setSelectedChapter( match[2]);
+      setSelectedVerse(match[3] ?? 1);
 
       return [verse];
     }
@@ -59,13 +58,11 @@ const findVerse = (query, bible, regex, indexState) => {
   return [];
 }
 
-const findFirstVerseFromBook = (bible, key, indexState) => {
+const findFirstVerseFromBook = (bible, key, setSelectedBook, setSelectedChapter, setSelectedVerse) => {
 
-  const [onBookSelect, onChapterSelect, onVerseSelect] = indexState;
-
-  onBookSelect(key);
-  onChapterSelect(1);
-  onVerseSelect(1);
+  setSelectedBook(key);
+  setSelectedChapter(1);
+  setSelectedVerse(1);
 
   return [fetchVerses([key, 1, 1], bible)];
 }
@@ -79,7 +76,7 @@ export const getBibleScope = (bible, selectedBook) => {
   return bible;
 }
 
-export const handleSearch = (query, bible, indexState, selectedBook) => {
+export const handleSearch = (query, bible, selectedBook, setSelectedBook, setSelectedChapter, setSelectedVerse) => {
 
     const normalizedQuery = query.toLowerCase().trim();
     let results = [];
@@ -89,13 +86,13 @@ export const handleSearch = (query, bible, indexState, selectedBook) => {
     // Option 1: Check for "book chapter:verse" (e.g., "1 john 3:1" or "john 3:5")
     const regexChapterOrVerse = /^(\d*\s?[a-zA-Z]+)\s+(\d+)(?::(\d+))?$/i;
     if (regexChapterOrVerse.test(normalizedQuery)) {
-      results = [...results, ...findVerse(normalizedQuery, bible, regexChapterOrVerse, indexState)];
+      results = [...results, ...findVerse(normalizedQuery, bible, regexChapterOrVerse, setSelectedBook, setSelectedChapter, setSelectedVerse)];
     }
 
     // Option 2: Book name only (e.g., "1 John" or "John")
     const book = books.find(b => b.name.toLowerCase() === normalizedQuery)?.key;
     if (book) {
-      results = [...results, ...findFirstVerseFromBook(bible, book, indexState)];
+      results = [...results, ...findFirstVerseFromBook(bible, book, setSelectedBook, setSelectedChapter, setSelectedVerse)];
     }
 
     let filteredBible = getBibleScope(bible, selectedBook);

@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react';
 import { handleSearch } from 'utils/search';
+import { useVerseCoords } from 'context/VerseCoordsContext';
 import debounce from 'lodash/debounce';
 
-const SearchBar = ({bible, setSelectedBook, setSelectedChapter, setSelectedVerse, selectedBook, onSearchResult, verses, query, setQuery, setLoading}) => {
+const SearchBar = ({bible, onSearchResult, verses, query, setQuery, setLoading}) => {
 
-    const indexState = [setSelectedBook, setSelectedChapter, setSelectedVerse];
+    const {selectedBook, setSelectedBook, setSelectedChapter, setSelectedVerse} = useVerseCoords();
 
     const debouncedSearch = useCallback(
         debounce((searchQuery) => {
-            let results = handleSearch(searchQuery, bible, indexState, selectedBook);
+            let results = handleSearch(searchQuery, bible, selectedBook, setSelectedBook, setSelectedChapter, setSelectedVerse);
             onSearchResult(results);
             setLoading(false);
         }, 1500), // 1500ms debounce delay

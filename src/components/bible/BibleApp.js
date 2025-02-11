@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Menu from 'components/bible/navigation/Menu';
 import Verses from 'components/bible/Verses';
 import LoadingThrobber from 'components/bible/navigation/search/LoadingThrobber';
+import { VerseCoordsProvider } from 'context/VerseCoordsContext';
 
 const BibleApp = () => {
 
@@ -23,7 +24,7 @@ const BibleApp = () => {
   }, [currentTranslation]);  
 
   return (
-    <div>
+    <VerseCoordsProvider>
         <Menu 
           bible={bible} 
           setVerses={setVerses} 
@@ -44,7 +45,7 @@ const BibleApp = () => {
         {!loading && 
           <Verses verses={verses} />
         }
-    </div>
+    </VerseCoordsProvider>
   );
 };
 

@@ -7,13 +7,11 @@ import ChapterDropDown from './book/ChapterDropDown';
 import VerseDropDown from './book/VerseDropDown';
 import SearchBar from './search/SearchBar';
 import { fetchVerses } from 'utils/fetch.js';
+import { useVerseCoords } from 'context/VerseCoordsContext';
 
 const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
 
-    // coords for specific verses
-    const [selectedBook, setSelectedBook] = useState(0);
-    const [selectedChapter, setSelectedChapter] = useState(0);
-    const [selectedVerse, setSelectedVerse] = useState(0);
+    const { selectedBook, setSelectedBook, selectedChapter, selectedVerse } = useVerseCoords();
 
     const [isBookSelectMenuOpen, setIsBookSelectMenuOpen] = useState(false);
     const [bookName, setBookName] = useState('');
@@ -39,9 +37,6 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
 
     const commonProps = {
         bible,
-        setSelectedBook,
-        setSelectedChapter,
-        setSelectedVerse,
         setBookName,
         setIsBookSelectMenuOpen,
         setVerses,
@@ -59,29 +54,13 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
                         isOpen={isBookSelectMenuOpen}
                         bookName={bookName}
                     />
-                    <ChapterDropDown 
-                        bible={bible} 
-                        selectedBook={selectedBook} 
-                        onChapterSelect={setSelectedChapter} 
-                        selectedChapter={selectedChapter} 
-                        onVerseSelect={setSelectedVerse} 
-                    />
-                    <VerseDropDown 
-                        bible={bible}
-                        selectedBook={selectedBook}
-                        selectedChapter={selectedChapter}
-                        selectedVerse={selectedVerse}
-                        onVerseSelect={setSelectedVerse}
-                    />
+                    <ChapterDropDown bible={bible} />
+                    <VerseDropDown bible={bible} />
 
                     <div className="menu-item">&nbsp;</div>
 
                     <SearchBar 
                         bible={bible} 
-                        setSelectedBook={selectedBook}
-                        setSelectedChapter={setSelectedChapter}
-                        setSelectedVerse={setSelectedVerse}
-                        selectedBook={selectedBook}
                         onSearchResult={setVerses} 
                         verses={verses} 
                         query={query}

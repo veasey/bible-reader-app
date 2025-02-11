@@ -1,16 +1,14 @@
 import React from 'react';
-
 import BookSelectListItem from './BookSelectListItem';
 
 const BookList = ({
     bible,
-    setSelectedBook,
-    setSelectedChapter,
-    setSelectedVerse,
     setBookName,
     setIsBookSelectMenuOpen,
     setVerses,
-    query, heading, testament
+    query, 
+    heading, 
+    testament
 }) => {
     return (
         <div className="book-menu-list">
@@ -19,9 +17,6 @@ const BookList = ({
                 {testament.map((b) => (
                     <BookSelectListItem 
                         bible={bible}
-                        setSelectedBook={setSelectedBook} 
-                        setSelectedChapter={setSelectedChapter} 
-                        setSelectedVerse={setSelectedVerse}
                         setBookName={setBookName}
                         setIsBookSelectMenuOpen={setIsBookSelectMenuOpen}
                         setVerses={setVerses}
