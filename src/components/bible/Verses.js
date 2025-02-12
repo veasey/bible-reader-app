@@ -4,7 +4,7 @@ import Back from 'components/bible/navigation/book/pagination/Back';
 /**
  * Show results
  */
-const Verses = ({verses}) => {
+const Verses = ({bible, verses}) => {
 
     if (!verses || !Array.isArray(verses) || !verses.length) {
         return;
@@ -13,7 +13,7 @@ const Verses = ({verses}) => {
     return (
         <div className = 'verse-results'>
 
-            <Back />
+            <Back bible={bible} />
 
             {verses.map((result, index) => (
             <p key={index} className=''>

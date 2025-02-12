@@ -43,7 +43,7 @@ const BibleApp = () => {
         )}
 
         {!loading && 
-          <Verses verses={verses} />
+          <Verses bible={bible} verses={verses} />
         }
     </VerseCoordsProvider>
   );
