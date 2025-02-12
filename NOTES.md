@@ -22,6 +22,7 @@ There is not order to these todos
 - [ ] Search Toggle. Instead of phrases, AI Prompt to ask for relevant verses.
 
 - [ ] Styling
+   - [ ] when viewing all verses by chapter, do not show book / chapter name alongside each individual verse. Only show that on results of a search
    - [x] have One Main Menu, with another "bar" for bible navigation beneath
    - [ ] Add dropdown animation . transition
    - [x] have results underneath all that.
