@@ -8,7 +8,8 @@ const BookSelectListItem = ({
     setIsBookSelectMenuOpen, 
     setVerses, 
     query, 
-    book
+    book,
+    index
 }) => {
 
     const [isClicked, setIsClicked] = useState(false);
@@ -42,6 +43,7 @@ const BookSelectListItem = ({
     return (
         <li onClick={() => handleBookClick()}
             className={isClicked ? "selected" : ""}
+            key={index}
         >
             {book.name}
         </li>

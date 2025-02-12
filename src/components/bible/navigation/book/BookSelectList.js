@@ -14,7 +14,7 @@ const BookList = ({
         <div className="book-menu-list">
             <h2>{heading}</h2>
             <ul>
-                {testament.map((b) => (
+                {testament.map((b, i) => (
                     <BookSelectListItem 
                         bible={bible}
                         setBookName={setBookName}
@@ -22,6 +22,7 @@ const BookList = ({
                         setVerses={setVerses}
                         query={query}
                         book={b}
+                        key={i}
                     />)
                 )}                    
             </ul>
