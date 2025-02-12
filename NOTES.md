@@ -11,6 +11,7 @@ There is not order to these todos
     - [ ] Do not show if at beginning or end
     - [ ] verse result pagination
   - [ ] Styling: have these centered in the right and left of content
+- [ ] 🐛 Menu Vertical Alignment
 - [ ] Show a Random Verse button
 - [ ] Session Var, remember where user left off.
    - [ ] Show Random verse by default, if no session found.
