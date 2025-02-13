@@ -26,8 +26,6 @@ const Back = ({bible}) => {
             setSelectedVerse(getLastVerse(selectedBook, previousChapter, bible));
             setSelectedChapter(previousChapter);
         }
-
-        // page back through verse results from searches
     };
 
     return (<button onClick={() => handlePreviousButtonClick()}>Back</button>)
