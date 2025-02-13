@@ -1,10 +1,11 @@
 import React  from 'react';
 import { getLastVerse, getLastChapter, getLastBook } from 'utils/pagination.js';
+import { fetchBookNameFromBookId } from 'utils/fetch.js';
 import { useVerseCoords } from 'context/VerseCoordsContext';
 
 const Next = ({bible}) => {
 
-    const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse} = useVerseCoords();
+    const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse, setBookName} = useVerseCoords();
 
     let nextBookId = selectedBook + 1;
     let nextChapterId = selectedChapter + 1;
@@ -23,6 +24,7 @@ const Next = ({bible}) => {
             if (selectedVerse !== 0) setSelectedVerse(1);
             setSelectedChapter(1);
             setSelectedBook(nextBookId);
+            setBookName(fetchBookNameFromBookId(nextBookId));
         }
 
         // if showing all verses, proceed to next chapter

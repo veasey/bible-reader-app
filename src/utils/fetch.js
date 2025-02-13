@@ -1,5 +1,11 @@
 import { books } from '../constants/books.js';
 
+export const fetchBookNameFromBookId = (bookId) => {
+    console.log(bookId);
+    console.log( books.find((b) => bookId === b.key)?.name );
+    return books.find((b) => bookId === b.key)?.name;
+}
+
 export const fetchVerses = (ids, bible) => {
 
     let [bookId, chapterId, verseId] = ids;
@@ -9,7 +15,7 @@ export const fetchVerses = (ids, bible) => {
         return [];
     }
 
-    let bookName = books.find((b) => bookId === b.key)?.name;
+    let bookName = fetchBookNameFromBookId(bookId);
 
     // all verses with chapter
     if (!verseId) {

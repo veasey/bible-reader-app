@@ -8,9 +8,12 @@ import { createContext, useContext, useState } from "react";
 const VerseCoordsContext = createContext();
 
 export const VerseCoordsProvider = ({ children }) => {
+  
   const [selectedBook, setSelectedBook] = useState(0);
   const [selectedChapter, setSelectedChapter] = useState(0);
   const [selectedVerse, setSelectedVerse] = useState(0);
+
+  const [bookName, setBookName] = useState('');
 
   return (
     <VerseCoordsContext.Provider
@@ -21,6 +24,8 @@ export const VerseCoordsProvider = ({ children }) => {
         setSelectedChapter,
         selectedVerse,
         setSelectedVerse,
+        bookName,
+        setBookName
       }}
     >
       {children}

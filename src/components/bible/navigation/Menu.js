@@ -11,10 +11,9 @@ import { useVerseCoords } from 'context/VerseCoordsContext';
 
 const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
 
-    const { selectedBook, setSelectedBook, selectedChapter, selectedVerse } = useVerseCoords();
+    const { selectedBook, setSelectedBook, selectedChapter, selectedVerse, bookName, setBookName } = useVerseCoords();
 
     const [isBookSelectMenuOpen, setIsBookSelectMenuOpen] = useState(false);
-    const [bookName, setBookName] = useState('');
 
     const oldTestamentBooks = books.slice(0,40);
     const newTestamentBooks = books.slice(40);

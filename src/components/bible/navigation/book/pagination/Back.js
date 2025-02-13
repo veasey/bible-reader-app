@@ -1,30 +1,48 @@
 import React  from 'react';
-import { getLastVerse } from 'utils/pagination.js';
+import { getLastVerse, getLastChapter } from 'utils/pagination.js';
+import { fetchBookNameFromBookId } from 'utils/fetch.js';
 import { useVerseCoords } from 'context/VerseCoordsContext';
 
 const Back = ({bible}) => {
 
-    const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse} = useVerseCoords();
+    const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse, setBookName} = useVerseCoords();
 
     // do not display if at beginning
-    if (selectedChapter <= 1 && selectedVerse === 0) return;
-    if (selectedBook === 1 && selectedChapter === 1 && selectedVerse === 1) return;
+    if (selectedBook === 1 && selectedChapter === 1 && (!selectedVerse || selectedVerse === 1)) return;
 
     const handlePreviousButtonClick = () => {
 
+        // go back a book
+        if (selectedChapter === 1 && (selectedVerse === 0 || selectedVerse === 1)) {
+
+            let previousBookId = selectedBook - 1;
+
+            let lastChapterId = getLastChapter(previousBookId, bible);
+            let lastVerseId = getLastVerse(previousBookId, lastChapterId, bible);            
+
+            if (!selectedVerse) setSelectedVerse(lastVerseId);
+            setSelectedChapter(lastChapterId);
+            setSelectedBook(previousBookId);
+            setBookName(fetchBookNameFromBookId(previousBookId));
+            return;
+        }
+
         // go back a chapter
-        let previousChapter = selectedChapter - 1;
+        let previousChapterId = selectedChapter - 1;
         if (selectedVerse === 0) {
-            return setSelectedChapter(previousChapter);
+            setSelectedChapter(previousChapterId);
+            return;
         }
 
         // back chapter if verse not set
-        let previousVerse = selectedVerse - 1;
-        if (previousVerse !== 0) {
-            return setSelectedVerse(previousVerse);
-        } else if (previousChapter !== 0) {
-            setSelectedVerse(getLastVerse(selectedBook, previousChapter, bible));
-            setSelectedChapter(previousChapter);
+        let previousVerseId = selectedVerse - 1;
+        if (previousVerseId !== 0) {
+            setSelectedVerse(previousVerseId);
+            return;
+        } else if (previousChapterId !== 0) {
+            setSelectedVerse(getLastVerse(selectedBook, previousChapterId, bible));
+            setSelectedChapter(previousChapterId);
+            return;
         }
     };
 
