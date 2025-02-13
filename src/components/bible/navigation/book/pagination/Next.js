@@ -11,7 +11,7 @@ const Next = ({bible}) => {
     let isNextChapterExist = (bible[nextChapterId]) ? true : false;
     let isNextVerseExist = (bible[nextChapterId][nextVerseId]) ? true : false;
 
-    let lastChapterId = getLastChapter(selectedBook, selectedChapter, bible);
+    let lastChapterId = getLastChapter(selectedBook, bible);
     let lastVerseId = getLastVerse(selectedBook, selectedChapter, bible);
 
     if (nextVerseId === lastVerseId && nextChapterId === lastChapterId) return;
