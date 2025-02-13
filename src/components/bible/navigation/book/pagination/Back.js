@@ -1,4 +1,5 @@
 import React  from 'react';
+import { getLastVerse } from 'utils/pagination.js';
 import { useVerseCoords } from 'context/VerseCoordsContext';
 
 const Back = ({bible}) => {
@@ -8,23 +9,6 @@ const Back = ({bible}) => {
     // do not display if at beginning
     if (selectedChapter <= 1 && selectedVerse === 0) return;
     if (selectedBook === 1 && selectedChapter === 1 && selectedVerse === 1) return;
-
-    /**
-     * Get Last Verse ID
-     * @param {Number} bookId 
-     * @param {Number} chapterId 
-     * @param {Object} bible 
-     * @returns {Number}
-     */
-    const getLastVerse = (bookId, chapterId, bible) => {
-        
-        if (bible[bookId] && bible[bookId][chapterId]) {
-            const verses = Object.keys(bible[bookId][chapterId]);
-            return Math.max(...verses.map(Number));
-        }
-        
-        return 0;
-    };
 
     const handlePreviousButtonClick = () => {
 
