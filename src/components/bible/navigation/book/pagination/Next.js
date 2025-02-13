@@ -8,8 +8,6 @@ const Next = ({bible}) => {
 
     let nextChapterId = selectedChapter + 1;
     let nextVerseId = selectedVerse + 1;
-    let isNextChapterExist = (bible[nextChapterId]) ? true : false;
-    let isNextVerseExist = (bible[nextChapterId][nextVerseId]) ? true : false;
 
     let lastChapterId = getLastChapter(selectedBook, bible);
     let lastVerseId = getLastVerse(selectedBook, selectedChapter, bible);
