@@ -25,7 +25,6 @@ const Back = ({bible}) => {
             setSelectedBook(previousBookId);
             
             let bookName = fetchBookNameFromBookId(previousBookId);
-            console.log(bookName);
             setBookName(bookName);
             return;
         }
