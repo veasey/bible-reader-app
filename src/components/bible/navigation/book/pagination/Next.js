@@ -7,9 +7,9 @@ const Next = ({bible}) => {
 
     const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse, setBookName} = useVerseCoords();
 
-    let nextBookId = selectedBook + 1;
-    let nextChapterId = selectedChapter + 1;
-    let nextVerseId = selectedVerse + 1;
+    let nextBookId = Number(selectedBook) + 1;
+    let nextChapterId = Number(selectedChapter) + 1;
+    let nextVerseId = Number(selectedVerse) + 1;
 
     let lastBookId = getLastBook(bible);
     let lastChapterId = getLastChapter(selectedBook, bible);
@@ -20,11 +20,12 @@ const Next = ({bible}) => {
     const handleNextButtonClick = () => {
 
         // if at end of book, proceed to next one
-        if (selectedChapter === lastChapterId && (selectedVerse === 0 || selectedVerse === lastVerseId)) {
+        if (selectedChapter === Number(lastChapterId) && (selectedVerse === 0 || selectedVerse === lastVerseId)) {
             setSelectedBook(nextBookId);
             setSelectedChapter(1);
             if (selectedVerse !== 0) setSelectedVerse(1);            
             setBookName(fetchBookNameFromBookId(nextBookId));
+            return;
         }
 
         // if showing all verses, proceed to next chapter
