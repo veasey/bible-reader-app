@@ -32,6 +32,7 @@ const SearchBar = ({bible, onSearchResult, verses, query, setQuery, setLoading})
 
     const clearQuery = () => {
         setQuery('');
+        setSelectedVerse([]);
     }
 
     return (

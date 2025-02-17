@@ -8,7 +8,7 @@ const Back = ({bible}) => {
     const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse, setBookName} = useVerseCoords();
 
     // do not display if at beginning
-    if (selectedBook == 1 && selectedChapter == 1 && (!selectedVerse || selectedVerse === 1)) return;
+    if (Number(selectedBook) === 1 && Number(selectedChapter) === 1 && (!selectedVerse || selectedVerse === 1)) return;
 
     const handlePreviousButtonClick = () => {
 

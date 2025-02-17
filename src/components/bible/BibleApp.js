@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Menu from 'components/bible/navigation/Menu';
-import Verses from 'components/bible/Verses';
+import Verses from 'components/bible/navigation/book/Verses';
+import SearchResultVerses from 'components/bible/navigation/search/Verses';
+import './Verses.css';
 import LoadingThrobber from 'components/bible/navigation/search/LoadingThrobber';
 import { VerseCoordsProvider } from 'context/VerseCoordsContext';
 
@@ -14,6 +16,8 @@ const BibleApp = () => {
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState('');
   
+  const [currentPage, setCurrentPage] = useState(0);
+
   useEffect(() => {
     fetch('/bibles/' + currentTranslation + '.json')
       .then((response) => response.json())
@@ -42,8 +46,19 @@ const BibleApp = () => {
             </div>
         )}
 
-        {!loading && 
+        {/* Regular Verses */}
+        {!loading && query.length === 0 &&
           <Verses bible={bible} verses={verses} />
+        }
+
+        {/* Search Result Verses */}
+        {!loading && query.length >= 1 &&
+          <SearchResultVerses 
+            bible={bible}
+            verses={verses}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         }
     </VerseCoordsProvider>
   );
