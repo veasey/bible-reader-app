@@ -6,7 +6,9 @@ import { books } from '../constants/books.js';
  * @returns {String}
  */
 export const fetchBookNameFromBookId = (bookId) => {
-    return books.find((b) => bookId === b.key)?.name;
+
+    console.log(bookId);
+    return books.find((b) => bookId === Number(b.key))?.name;
 }
 
 /**

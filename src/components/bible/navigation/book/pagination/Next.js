@@ -21,9 +21,9 @@ const Next = ({bible}) => {
 
         // if at end of book, proceed to next one
         if (selectedChapter === lastChapterId && (selectedVerse === 0 || selectedVerse === lastVerseId)) {
-            if (selectedVerse !== 0) setSelectedVerse(1);
-            setSelectedChapter(1);
             setSelectedBook(nextBookId);
+            setSelectedChapter(1);
+            if (selectedVerse !== 0) setSelectedVerse(1);
             setBookName(fetchBookNameFromBookId(nextBookId));
         }
 

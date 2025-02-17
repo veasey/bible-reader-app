@@ -8,7 +8,7 @@ const Back = ({bible}) => {
     const {setSelectedBook, selectedBook, setSelectedChapter, selectedChapter, setSelectedVerse, selectedVerse, setBookName} = useVerseCoords();
 
     // do not display if at beginning
-    if (selectedBook === 1 && selectedChapter === 1 && (!selectedVerse || selectedVerse === 1)) return;
+    if (selectedBook == 1 && selectedChapter == 1 && (!selectedVerse || selectedVerse === 1)) return;
 
     const handlePreviousButtonClick = () => {
 
@@ -20,10 +20,13 @@ const Back = ({bible}) => {
             let lastChapterId = getLastChapter(previousBookId, bible);
             let lastVerseId = getLastVerse(previousBookId, lastChapterId, bible);            
 
-            if (!selectedVerse) setSelectedVerse(lastVerseId);
+            if (selectedVerse !== 0) setSelectedVerse(lastVerseId);
             setSelectedChapter(lastChapterId);
             setSelectedBook(previousBookId);
-            setBookName(fetchBookNameFromBookId(previousBookId));
+            
+            let bookName = fetchBookNameFromBookId(previousBookId);
+            console.log(bookName);
+            setBookName(bookName);
             return;
         }
 
