@@ -8,6 +8,7 @@ import VerseDropDown from './book/VerseDropDown';
 import SearchBar from './search/SearchBar';
 import { fetchVerses } from 'utils/fetch.js';
 import { useVerseCoords } from 'context/VerseCoordsContext';
+import { motion } from "framer-motion";
 
 const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
 
@@ -70,12 +71,18 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
 
                 {/* Drop Down Formatted  Book List */}
                 {isBookSelectMenuOpen && (
-                    <div className="submenu-book-select-container">
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className="submenu-book-select-container"
+                    >
                         <div className="book-menu-lists">
                             <BookSelectList {...commonProps} heading="Old Testament" testament={oldTestamentBooks} prefix="old"  />
                             <BookSelectList {...commonProps} heading="New Testament" testament={newTestamentBooks} prefix="new" />
                         </div>
-                    </div>
+                    </motion.div>
                 )}
             </div>
 
