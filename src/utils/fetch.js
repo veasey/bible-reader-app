@@ -1,11 +1,20 @@
 import { books } from '../constants/books.js';
 
+/**
+ * fetch book name
+ * @param {Number} bookId 
+ * @returns {String}
+ */
 export const fetchBookNameFromBookId = (bookId) => {
-    console.log(bookId);
-    console.log( books.find((b) => bookId === b.key)?.name );
     return books.find((b) => bookId === b.key)?.name;
 }
 
+/**
+ * Fetch Verses
+ * @param {Array<Number>} ids 
+ * @param {Object} bible 
+ * @returns {Array}
+ */
 export const fetchVerses = (ids, bible) => {
 
     let [bookId, chapterId, verseId] = ids;
@@ -36,6 +45,15 @@ export const fetchVerses = (ids, bible) => {
     return [fetchVerse(bible, bookName, bookId, chapterId, verseId)];
 };
 
+/**
+ * Fetch verse
+ * @param {Object} bible 
+ * @param {String} bookName 
+ * @param {Number} bookId 
+ * @param {Number} chapterId 
+ * @param {Number} verseId 
+ * @returns {Object}
+ */
 export const fetchVerse = (bible, bookName, bookId, chapterId, verseId) => {
     return {
         book:     bookName,
@@ -45,6 +63,13 @@ export const fetchVerse = (bible, bookName, bookId, chapterId, verseId) => {
     };
 };
 
+/**
+ * Fetch verses from chapter
+ * @param {Number} bookId 
+ * @param {Number} chapterId 
+ * @param {Object} bible 
+ * @returns {Array<Object>}
+ */
 export const fetchVersesFromChapter = (bookId, chapterId, bible) => {
     return bible?.[bookId]?.[chapterId] ?? undefined;
 };
