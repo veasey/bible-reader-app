@@ -16,6 +16,7 @@ const About = () => {
       <form
         action="https://formspree.io/f/mkgovode"
         method="POST"
+        className='contact'
       >
         <label>
           Your email:

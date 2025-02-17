@@ -23,7 +23,7 @@ const Next = ({bible}) => {
         if (selectedChapter === lastChapterId && (selectedVerse === 0 || selectedVerse === lastVerseId)) {
             setSelectedBook(nextBookId);
             setSelectedChapter(1);
-            if (selectedVerse !== 0) setSelectedVerse(1);
+            if (selectedVerse !== 0) setSelectedVerse(1);            
             setBookName(fetchBookNameFromBookId(nextBookId));
         }
 
