@@ -5,12 +5,12 @@ const ChapterMenu = ({bible, setQuery}) => {
     
     const {selectedBook, selectedChapter, setSelectedChapter, setSelectedVerse} = useVerseCoords();
 
-    if (!selectedBook) return;
+    if (!selectedBook || !bible[selectedBook]) return null;
 
     const chapterNumbers = Object.keys(bible[selectedBook]);
     
     const handleChange = (event) => {
-        setSelectedChapter(event.target.value);
+        setSelectedChapter(Number(event.target.value));
         setSelectedVerse(0);
         setQuery('');
     };
