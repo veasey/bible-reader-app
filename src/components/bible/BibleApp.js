@@ -40,7 +40,7 @@ const BibleApp = () => {
 
         {/* Feedback */}
         {loading && <LoadingThrobber message="Searching for verses..." />}
-        {query && query.length > 0 && verses?.length === 0 && (
+        {!loading && query && query.length > 0 && verses?.length === 0 && (
             <div style={{padding: '20px'}}>
                 <p>No results found</p>
             </div>
