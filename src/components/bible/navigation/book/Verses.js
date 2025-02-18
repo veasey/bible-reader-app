@@ -11,15 +11,19 @@ const Verses = ({bible, verses}) => {
     }
 
     return (
-        <div className = 'verse-results'>
+        <div className='verse-container'>
 
             <Back bible={bible} />
 
-            {verses.map((result, index) => (
-            <p key={index} className=''>
-                <strong>{result.verse}</strong> - {result.text}
-            </p>
-            ))}
+            <div className='verse-column'>
+                <div className='verse-column-content'>
+                    {verses.map((result, index) => (
+                        <p key={index}>
+                            <strong>{result.verse}</strong> - {result.text}
+                        </p>
+                    ))}
+                </div>
+            </div>
 
             <Next bible={bible} />
 

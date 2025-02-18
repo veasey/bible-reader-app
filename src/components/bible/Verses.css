@@ -1,4 +1,21 @@
-.verse-results {
+.verse-container {
     background-color: blanchedalmond;
-    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: top;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.verse-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.verse-column-content {
+    max-width: 640px;
+    width: 100%;
+    text-align: left;
 }

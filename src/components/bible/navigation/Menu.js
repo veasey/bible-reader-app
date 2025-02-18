@@ -4,8 +4,9 @@ import { books } from 'constants/books.js';
 import BookSelectList from './book/BookSelectList';
 import BookSelectButton from './book/BookSelectButton';
 import ChapterDropDown from './book/ChapterDropDown';
-import VerseDropDown from './book/VerseDropDown';
+import RandomVerseButton from 'components/bible/navigation/RandomVerseButton';
 import SearchBar from './search/SearchBar';
+import VerseDropDown from './book/VerseDropDown';
 import { fetchVerses } from 'utils/fetch.js';
 import { useVerseCoords } from 'context/VerseCoordsContext';
 import { motion } from "framer-motion";
@@ -43,6 +44,10 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
         query
     };
 
+    const MenuSpacer = () => {
+        return (<div className="menu-item">&nbsp;</div>);
+    };
+
     return (
         <>
             <div className='menu'>
@@ -57,7 +62,7 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
                     <ChapterDropDown bible={bible} setQuery={setQuery} />
                     <VerseDropDown bible={bible} setQuery={setQuery} />
 
-                    <div className="menu-item">&nbsp;</div>
+                    <MenuSpacer />
 
                     <SearchBar 
                         bible={bible} 
@@ -67,6 +72,9 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
                         setQuery={setQuery}
                         setLoading={setLoading}
                     />
+
+                    <MenuSpacer />
+                    <RandomVerseButton bible={bible} />
                 </div>
 
                 {/* Drop Down Formatted  Book List */}

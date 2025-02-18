@@ -18,20 +18,28 @@ const SearchResultVerses = ({bible, verses}) => {
     const handleNextButtonClick = () => { setCurrentPage(currentPage + 1); };
 
     return (
-        <div className = 'verse-results'>
+        <div className='verse-container'>
 
             {currentPage > 0 && verses.length > itemsPerPage &&
-                <button onClick={() => handleBackButtonClick()}>Back</button>
+                <button onClick={() => handleBackButtonClick()}>
+                    Back
+                </button>
             }
 
-            {currentVerses.map((result, index) => (
-            <p key={index} className=''>
-                <strong>{result.book} {result.chapter}:{result.verse}</strong> - {result.text}
-            </p>
-            ))}
+            <div className='verse-column'>
+                <div className='verse-column-content'>
+                    {currentVerses.map((result, index) => (
+                        <p key={index}>
+                            <strong>{result.book} {result.chapter}:{result.verse}</strong> - {result.text}
+                        </p>
+                    ))}
+                </div>
+            </div>
 
             {currentPage < lastPage && verses.length > itemsPerPage &&
-                <button onClick={() => handleNextButtonClick()}>Next</button>
+                <button onClick={() => handleNextButtonClick()}>
+                    Next
+                </button>
             }
 
         </div>

@@ -6,9 +6,6 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] Pagination
-  - [ ] Styling: have these centered in the right and left of content
-- [ ] Show a Random Verse button
 - [ ] Session Var, remember where user left off.
    - [ ] Show Random verse by default, if no session found.
 - [ ] select alt translation (just add a NLT etc, just to test and adapt for it)
