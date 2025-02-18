@@ -1,7 +1,7 @@
 import React  from 'react';
 import { useVerseCoords } from 'context/VerseCoordsContext';
 
-const ChapterMenu = ({bible}) => {
+const ChapterMenu = ({bible, setQuery}) => {
     
     const {selectedBook, selectedChapter, setSelectedChapter, setSelectedVerse} = useVerseCoords();
 
@@ -12,6 +12,7 @@ const ChapterMenu = ({bible}) => {
     const handleChange = (event) => {
         setSelectedChapter(event.target.value);
         setSelectedVerse(0);
+        setQuery('');
     };
 
     return (

@@ -54,8 +54,8 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
                         isOpen={isBookSelectMenuOpen}
                         bookName={bookName}
                     />
-                    <ChapterDropDown bible={bible} />
-                    <VerseDropDown bible={bible} />
+                    <ChapterDropDown bible={bible} setQuery={setQuery} />
+                    <VerseDropDown bible={bible} setQuery={setQuery} />
 
                     <div className="menu-item">&nbsp;</div>
 
