@@ -7,7 +7,6 @@ If there is a better place to keep these, let me know.
 There is not order to these todos
 
 - [ ] Pagination
-    - [ ] verse result pagination
   - [ ] Styling: have these centered in the right and left of content
 - [ ] Show a Random Verse button
 - [ ] Session Var, remember where user left off.
