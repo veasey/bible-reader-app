@@ -23,36 +23,39 @@ const BibleApp = () => {
         setBible(data);
       })
       .catch((error) => console.error('Error loading Bible:', error));
-  }, [currentTranslation]);  
+  }, [currentTranslation]);
 
   return (
     <VerseCoordsProvider>
-        <Menu 
-          bible={bible} 
-          setVerses={setVerses} 
-          verses={verses} 
-          setLoading={setLoading} 
-          setQuery={setQuery}
-          query={query}
-        />
 
-        {/* Feedback */}
-        {loading && <LoadingThrobber message="Searching for verses..." />}
-        {!loading && query && query.length > 0 && verses?.length === 0 && (
-            <div style={{padding: '20px'}}>
-                <p>No results found</p>
-            </div>
-        )}
+        {bible && <>
+          <Menu 
+            bible={bible} 
+            setVerses={setVerses} 
+            verses={verses} 
+            setLoading={setLoading} 
+            setQuery={setQuery}
+            query={query}
+          />
 
-        {/* Regular Verses */}
-        {!loading && query.length === 0 &&
-          <Verses bible={bible} verses={verses} />
-        }
+          {/* Feedback */}
+          {loading && <LoadingThrobber message="Searching for verses..." />}
+          {!loading && query && query.length > 0 && verses?.length === 0 && (
+              <div style={{padding: '20px'}}>
+                  <p>No results found</p>
+              </div>
+          )}
 
-        {/* Search Result Verses */}
-        {!loading && query.length >= 1 &&
-          <SearchResultVerses bible={bible} verses={verses} />
-        }
+          {/* Regular Verses */}
+          {!loading && query.length === 0 &&
+            <Verses bible={bible} verses={verses} />
+          }
+
+          {/* Search Result Verses */}
+          {!loading && query.length >= 1 &&
+            <SearchResultVerses bible={bible} verses={verses} />
+          }
+        </>}
     </VerseCoordsProvider>
   );
 };

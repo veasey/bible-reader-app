@@ -1,6 +1,36 @@
 import { books } from '../constants/books.js';
 
 /**
+ * fetch random coords
+ * @param {Object} bible
+ * @returns {Object}
+ */
+export const fetchRandomVerse = (bible) => {
+
+    if (!bible) return false;
+
+    const books = Object.keys(bible);
+    const randomBook = Number(books[Math.floor(Math.random() * books.length)]);
+
+    if (!bible[randomBook]) return false;
+
+    const chapters = Object.keys(bible[randomBook]);
+    const randomChapter = Number(chapters[Math.floor(Math.random() * chapters.length)]);
+
+    if (!bible[randomBook][randomChapter]) return false;
+
+    const verses = Object.keys(bible[randomBook][randomChapter]);
+    const randomVerse = Number(verses[Math.floor(Math.random() * verses.length)]);
+
+    return {
+        bookId: randomBook, 
+        chapterId: randomChapter, 
+        verseId: randomVerse,
+        bookname: fetchBookNameFromBookId(randomBook)
+    };
+}
+
+/**
  * fetch book name
  * @param {Number} bookId 
  * @returns {String}
