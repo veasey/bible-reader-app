@@ -22,7 +22,7 @@ const SearchResultVerses = ({bible, verses}) => {
 
             {currentPage > 0 && verses.length > itemsPerPage &&
                 <button onClick={() => handleBackButtonClick()}>
-                    Back
+                    ⬅️
                 </button>
             }
 
@@ -38,7 +38,7 @@ const SearchResultVerses = ({bible, verses}) => {
 
             {currentPage < lastPage && verses.length > itemsPerPage &&
                 <button onClick={() => handleNextButtonClick()}>
-                    Next
+                    ➡️
                 </button>
             }
 

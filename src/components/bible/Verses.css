@@ -1,21 +1,37 @@
 .verse-container {
     background-color: blanchedalmond;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: top;
-    justify-content: space-between;
-    gap: 10px;
+    position: relative; 
 }
 
-.verse-column {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.verse-column-content {
+.verse {
     max-width: 640px;
     width: 100%;
     text-align: left;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
+
+/* Pagination Buttons */
+/* Button container for navigation buttons */
+.button-container {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  
+  /* Button styling */
+  button {
+    font-size: 2.5em;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
