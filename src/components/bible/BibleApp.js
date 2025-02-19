@@ -38,23 +38,26 @@ const BibleApp = () => {
             query={query}
           />
 
-          {/* Feedback */}
-          {loading && <LoadingThrobber message="Searching for verses..." />}
-          {!loading && query && query.length > 0 && verses?.length === 0 && (
-              <div style={{padding: '20px'}}>
-                  <p>No results found</p>
-              </div>
-          )}
+          <div className="body">
 
-          {/* Regular Verses */}
-          {!loading && query.length === 0 &&
-            <Verses bible={bible} verses={verses} />
-          }
+            {/* Feedback */}
+            {loading && <LoadingThrobber message="Searching for verses..." />}
+            {!loading && query && query.length > 0 && verses?.length === 0 && (
+                <div style={{padding: '20px'}}>
+                    <p>No results found</p>
+                </div>
+            )}
 
-          {/* Search Result Verses */}
-          {!loading && query.length >= 1 &&
-            <SearchResultVerses bible={bible} verses={verses} />
-          }
+            {/* Regular Verses */}
+            {!loading && query.length === 0 &&
+              <Verses bible={bible} verses={verses} />
+            }
+
+            {/* Search Result Verses */}
+            {!loading && query.length >= 1 &&
+              <SearchResultVerses bible={bible} verses={verses} />
+            }
+          </div>
         </>}
     </VerseCoordsProvider>
   );

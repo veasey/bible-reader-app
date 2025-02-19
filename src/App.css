@@ -6,10 +6,10 @@ html, body {
 
 body {
   background-color: #61dafb;
-
   font-family: 'Merryweather', serif;
   line-height: 1.6;  
   color: #333;  
+  background-color: bisque;
 }
 
 h1 {
@@ -23,6 +23,15 @@ h1 {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+
+.app > .verse-container {
+  flex-grow: 1; /* Take up remaining space */
+  display: flex; /* Ensures alignment works */
+  flex-direction: column; /* Stack content inside */
+  align-items: flex-start; /* Align content to the left (default) */
+  justify-content: flex-start; /* Align content to the top */
+  overflow: auto; /* Prevents content from overflowing */
 }
 
 .app h1 {
