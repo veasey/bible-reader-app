@@ -1,4 +1,5 @@
 import React  from 'react';
+import Cookies from 'js-cookie';
 import { fetchRandomVerse } from 'utils/fetch.js';
 import { useVerseCoords } from 'context/VerseCoordsContext';
 
@@ -21,12 +22,11 @@ const RandomVerseButton = ({bible}) => {
         return setRandomVerse();
     };
 
-    // set random verse, if first time.
-    const firstVisit = sessionStorage.getItem('firstVisit');
-    if (!firstVisit) {
+    // set random verse, if first time
+    if (!Cookies.get('firstTimeVisitor')) {
         setRandomVerse();
-        sessionStorage.setItem('firstVisit', 1);
-    }
+        Cookies.set('firstTimeVisitor', 1);
+    } 
     
     return (
         <div className="menu-item">

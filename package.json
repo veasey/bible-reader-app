@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "framer-motion": "^12.4.4",
+    "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
