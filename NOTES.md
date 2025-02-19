@@ -6,14 +6,13 @@ If there is a better place to keep these, let me know.
 
 There is not order to these todos
 
-- [ ] Session Var, remember where user left off.
-   - [ ] Show Random verse by default, if no session found.
+- [ ] Styling
+   - [ ] mobile styling
 - [ ] select alt translation (just add a NLT etc, just to test and adapt for it)
 - [ ] /x-x-x paths, so can hyperlink results
   - [ ] When clicking Book or Chapter in result, take to top of that result list.
 - [ ] Search Toggle. Instead of phrases, AI Prompt to ask for relevant verses.
-- [ ] Styling
-   - [ ] mobile styling
+
 
 ## ideas
 
