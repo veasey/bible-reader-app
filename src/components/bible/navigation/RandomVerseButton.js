@@ -25,7 +25,7 @@ const RandomVerseButton = ({bible}) => {
     // set random verse, if first time
     if (!Cookies.get('firstTimeVisitor')) {
         setRandomVerse();
-        Cookies.set('firstTimeVisitor', 1);
+        Cookies.set('firstTimeVisitor', 1, { expires: 7 });
     } 
     
     return (
