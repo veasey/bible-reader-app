@@ -45,7 +45,7 @@ const Next = ({bible}) => {
         setSelectedVerse(nextVerseId);
     };
 
-    return (<button onClick={() => handleNextButtonClick()}>➡️</button>)
+    return (<button className='next' onClick={() => handleNextButtonClick()}>➡️</button>)
 };
 
 export default Next;

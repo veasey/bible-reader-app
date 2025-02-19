@@ -1,7 +1,19 @@
 .verse-container {
+
+    border-top: 1px solid whitesmoke;
+
     background-color: blanchedalmond;
     width: 100%;
     position: relative; 
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align verses at the top */
+    align-items: center; /* Center align the content horizontally */
+    height: 100vh; /* Make sure the container takes up the full viewport height */
+    
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .verse {
@@ -17,21 +29,29 @@
 /* Pagination Buttons */
 /* Button container for navigation buttons */
 .button-container {
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    max-width: 100%;
-  }
-  
-  /* Button styling */
-  button {
-    font-size: 2.5em;
-    font-weight: bold;
-    background-color: #f0f0f0;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+}
+
+/* Button styling */
+button {
+  font-size: 2.5em;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+button.prev {
+  margin-right: auto;
+}
+
+button.next {
+  margin-left: auto;
+}

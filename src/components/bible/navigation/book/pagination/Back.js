@@ -48,7 +48,7 @@ const Back = ({bible}) => {
         }
     };
 
-    return (<button onClick={() => handlePreviousButtonClick()}>⬅️</button>)
+    return (<button className='prev' onClick={() => handlePreviousButtonClick()}>⬅️</button>)
 };
 
 export default Back;
