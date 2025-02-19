@@ -44,37 +44,36 @@ const Menu = ({ bible, setVerses, verses, setLoading, setQuery, query}) => {
         query
     };
 
-    const MenuSpacer = () => {
-        return (<div className="menu-item">&nbsp;</div>);
-    };
-
     return (
         <>
             <div className='menu'>
                 <div className='menu-container'>
 
-                    <BookSelectButton 
-                        onClearBookSelection={clearBookSelection}
-                        onToggleIsOpen={toggleOpenSelectBookMenu}
-                        isOpen={isBookSelectMenuOpen}
-                        bookName={bookName}
-                    />
-                    <ChapterDropDown bible={bible} setQuery={setQuery} />
-                    <VerseDropDown bible={bible} setQuery={setQuery} />
+                    <div class='menu-section'>
+                        <BookSelectButton 
+                            onClearBookSelection={clearBookSelection}
+                            onToggleIsOpen={toggleOpenSelectBookMenu}
+                            isOpen={isBookSelectMenuOpen}
+                            bookName={bookName}
+                        />
+                        <ChapterDropDown bible={bible} setQuery={setQuery} />
+                        <VerseDropDown bible={bible} setQuery={setQuery} />
+                    </div>
+                    
+                    <div class='menu-section'>
+                        <SearchBar 
+                            bible={bible} 
+                            onSearchResult={setVerses} 
+                            verses={verses} 
+                            query={query}
+                            setQuery={setQuery}
+                            setLoading={setLoading}
+                        />
+                    </div>
 
-                    <MenuSpacer />
-
-                    <SearchBar 
-                        bible={bible} 
-                        onSearchResult={setVerses} 
-                        verses={verses} 
-                        query={query}
-                        setQuery={setQuery}
-                        setLoading={setLoading}
-                    />
-
-                    <MenuSpacer />
-                    <RandomVerseButton bible={bible} />
+                    <div class='menu-section'>
+                        <RandomVerseButton bible={bible} />
+                    </div>
                 </div>
 
                 {/* Drop Down Formatted  Book List */}

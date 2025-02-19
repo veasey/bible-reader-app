@@ -4,7 +4,6 @@
 
     background-color: blanchedalmond;
     width: 100%;
-    position: relative; 
 
     display: flex;
     flex-direction: column;
@@ -28,7 +27,7 @@
 
 /* Pagination Buttons */
 /* Button container for navigation buttons */
-.button-container {
+.verse-container .button-container {
   position: fixed;
   bottom: 20px;
   left: 0;
@@ -39,7 +38,7 @@
 }
 
 /* Button styling */
-button {
+.verse-container .button-container  button {
   font-size: 2.5em;
   font-weight: bold;
   background-color: #f0f0f0;
@@ -48,10 +47,10 @@ button {
   cursor: pointer;
 }
 
-button.prev {
+.verse-container .button-container button.prev {
   margin-right: auto;
 }
 
-button.next {
+.verse-container .button-container button.next {
   margin-left: auto;
 }
