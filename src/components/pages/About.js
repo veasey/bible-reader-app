@@ -7,10 +7,11 @@ const About = () => {
       <div className="page">
         <div>
           <h2>About</h2>
-          <p>This is a pet project of Clint Veasey.</p>
-          <p>Source code is available for here, feel free to fork and create your own version. 
-            <a href="https://github.com/veasey/bible-reader-app">github.com/veasey/bible-reader-app</a></p>
-          <p>Get in touch if you want to be involved or contribute to this app.</p>
+          <p>
+            This is a pet project of Clint Veasey. Source code is available here, feel free to fork and create your own version. 
+            <a href="https://github.com/veasey/bible-reader-app">github.com/veasey/bible-reader-app</a>. 
+            Get in touch if you want to be involved or contribute to this app.
+          </p>
         </div>
         
         <h3>Email Me</h3>

@@ -14,31 +14,30 @@ body {
   background-color: bisque;
 }
 
-h1 {
-  text-align: center;
-  @media (max-width: 768px) {
-    font-size: 1em;
-  }
-}
-
 .app {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.app > .verse-container {
-  flex-grow: 1; /* Take up remaining space */
-  display: flex; /* Ensures alignment works */
-  flex-direction: column; /* Stack content inside */
-  align-items: flex-start; /* Align content to the left (default) */
-  justify-content: flex-start; /* Align content to the top */
-  overflow: auto; /* Prevents content from overflowing */
-}
-
 .app h1 {
+  
+  font-size: 3rem;  /* Adjust as needed */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #000; /* Gold */
+  background: linear-gradient(45deg, #000, #0d51e6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-align: center;
   padding-left: 20px;
   padding-right: 20px;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 }
 
 .main-menu {
@@ -58,4 +57,13 @@ h1 {
 .main-menu span:hover {
   background-color: #f0f0f0; /* Light hover background */
   color: #007bff; /* Hover text color */
+}
+
+.app > .verse-container {
+  flex-grow: 1; /* Take up remaining space */
+  display: flex; /* Ensures alignment works */
+  flex-direction: column; /* Stack content inside */
+  align-items: flex-start; /* Align content to the left (default) */
+  justify-content: flex-start; /* Align content to the top */
+  overflow: auto; /* Prevents content from overflowing */
 }

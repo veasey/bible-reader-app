@@ -1,8 +1,7 @@
 /* General Menu Container */
 .menu {
-    padding: 20px;
-    align-items: center;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* Flexbox Layout for Menu Items */
