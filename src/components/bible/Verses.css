@@ -23,21 +23,23 @@
 .verse-container .button-container {
   position: fixed;
   bottom: 20px;
-  left: 0;
-  right: 0;
+  left: 0px;
+  right: 0px;
   display: flex;
   justify-content: space-between;
-  max-width: 100%;
+  max-width: 820px;
+  margin: auto;
 }
 
 /* Button styling */
 .verse-container .button-container  button {
   font-size: 2.5em;
-  font-weight: bold;
-  background-color: #f0f0f0;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: none; /* Removes background */
+  border: none; /* Removes border */
+  box-shadow: none; /* Removes shadow */
   cursor: pointer;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+  text-align: center;
 }
 
 .verse-container .button-container button.prev {
