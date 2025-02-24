@@ -1,6 +1,7 @@
 # React Bible Reader
 
 Simple bible reader project.
+Live demo available here: https://bible-reader-app.vercel.app
 
 ## History
 
